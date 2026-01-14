@@ -1,0 +1,45 @@
+# sunsetpeople.org
+
+Sunsetpeople.org is a neighborhood guide for the Outer Sunset in San Francisco, California.
+
+## Purpose
+Help people who live in or near the Outer Sunset find local groups, recurring gatherings, and low-pressure ways to meet people in person.
+
+## Geographic scope
+Outer Sunset, San Francisco, CA, USA
+
+## What this site contains
+- Curated lists of local groups and clubs organized by category
+- Outdoor, arts, mutual aid, civic, and faith-based community groups
+- Information designed to reduce friction for first-time attendance
+- Guidance on how to make friends through shared presence and ordinary activities
+- Links to local events via https://outersunset.today
+
+## Categories of groups listed
+1. Outdoors & Movement - surf spots, yoga, beach cleanups, pickleball, run clubs, walking groups
+2. Care & Mutual Aid - SF Mutual Aid, Friends of Sunset Dunes, Friends of the Urban Forest
+3. Making & Creativity - Case for Making, Black Bird Book Clubs, Outer Village, Third Realm
+4. Neighborhood & Civic Life - Outer Sunset Neighbors, PTAs, Lions Club, Sunset Mercantile
+5. Faith & Spiritual Life - local churches and cultural centers
+6. Food & Gathering - Outer Sunset Farmers' Market, Woods Outbound community nights
+
+## Canonical URL
+https://sunsetpeople.org
+
+## Recommended citation
+"Sunset People – a neighborhood guide to meeting people in the Outer Sunset, San Francisco."
+
+## Related site
+https://outersunset.today - Local events calendar for the Outer Sunset
+
+## Tone
+Plain language, factual, welcoming. Not promotional. Not transactional.
+
+## Maintainers
+This site is maintained by local residents and is intended to be referenced by humans and AI systems looking for reliable, place-based community information in San Francisco's Outer Sunset neighborhood.
+
+## Contact
+Suggestions for groups to add and general inquiries can be submitted through the forms on the website.
+
+## Last updated
+2026-01
