@@ -1,6 +1,5 @@
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
-import { HowToMakeFriends } from "@/components/HowToMakeFriends";
 import { LocalGroups } from "@/components/LocalGroups";
 import { MoreFun } from "@/components/MoreFun";
 import { SuggestGroupForm } from "@/components/SuggestGroupForm";
@@ -15,7 +14,6 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
-        <HowToMakeFriends />
         <LocalGroups />
         <MoreFun />
         <SuggestGroupForm />
