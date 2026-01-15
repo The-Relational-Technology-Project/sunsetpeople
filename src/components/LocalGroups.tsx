@@ -3,7 +3,7 @@ import { categories } from "@/data/groups";
 
 export function LocalGroups() {
   return (
-    <section id="local-groups" className="py-12 bg-sand">
+    <section id="local-groups" className="py-12 bg-sand scroll-mt-20">
       <div className="container mx-auto px-6">
         <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4 text-center">
           local groups
