@@ -14,7 +14,7 @@ interface Category {
 const categories: Category[] = [{
   name: "outdoors & movement",
   bgColor: "bg-ocean",
-  textColor: "text-sand",
+  textColor: "text-white",
   groups: [{
     name: "Surf Spots",
     description: "Just paddle out, say hi. The lineup is the neighborhood."
@@ -37,7 +37,7 @@ const categories: Category[] = [{
 }, {
   name: "care & mutual aid",
   bgColor: "bg-dune",
-  textColor: "text-sand",
+  textColor: "text-white",
   groups: [{
     name: "SF Mutual Aid",
     description: "Neighbors helping neighbors. Many ways to give and receive support."
@@ -51,7 +51,7 @@ const categories: Category[] = [{
 }, {
   name: "making & creativity",
   bgColor: "bg-charcoal",
-  textColor: "text-sand",
+  textColor: "text-white",
   groups: [{
     name: "Case for Making Workshops",
     description: "Hands-on craft and making workshops. Build something, meet people."
@@ -84,8 +84,8 @@ const categories: Category[] = [{
   }]
 }, {
   name: "faith & spiritual life",
-  bgColor: "bg-sunset",
-  textColor: "text-sand",
+  bgColor: "bg-sunset-accent",
+  textColor: "text-charcoal",
   groups: [{
     name: "Sunset Church",
     description: "Welcoming community church in the heart of the neighborhood."
@@ -101,8 +101,8 @@ const categories: Category[] = [{
   }]
 }, {
   name: "food & gathering",
-  bgColor: "bg-primary",
-  textColor: "text-sand",
+  bgColor: "bg-sunset",
+  textColor: "text-white",
   groups: [{
     name: "Outer Sunset Farmers' Market",
     description: "Sunday mornings. The place to see and be seen while buying produce."

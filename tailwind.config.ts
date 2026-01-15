@@ -56,6 +56,7 @@ export default {
           dark: "hsl(var(--sand-dark))",
         },
         sunset: "hsl(var(--sunset-orange))",
+        "sunset-accent": "hsl(var(--sunset-accent))",
         ocean: "hsl(var(--ocean-blue))",
         dune: "hsl(var(--dune-green))",
         fog: "hsl(var(--fog-gray))",
