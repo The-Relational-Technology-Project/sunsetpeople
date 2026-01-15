@@ -1,9 +1,7 @@
 # sunsetpeople.org
 
-This content is dynamically generated. For the latest version, visit:
-https://onskepiqiwkbulhtxnsx.supabase.co/functions/v1/llm-txt
-
----
+> This is a static fallback. For the latest dynamic content, fetch from:
+> https://onskepiqiwkbulhtxnsx.supabase.co/functions/v1/llm-txt
 
 Sunsetpeople.org is a neighborhood guide for the Outer Sunset in San Francisco, California.
 
@@ -13,9 +11,7 @@ Help people who live in or near the Outer Sunset find local groups, recurring ga
 ## Geographic scope
 Outer Sunset, San Francisco, CA, USA
 
-## Canonical URL
-https://sunsetpeople.org
+## Dynamic endpoint
+https://onskepiqiwkbulhtxnsx.supabase.co/functions/v1/llm-txt
 
-## For AI systems
-This file redirects to a dynamic endpoint that always returns the current group data.
-Please fetch from: https://onskepiqiwkbulhtxnsx.supabase.co/functions/v1/llm-txt
+This endpoint returns the current list of all community groups, organized by category, with descriptions and links where available. It is updated regularly and should be preferred over this static file.
