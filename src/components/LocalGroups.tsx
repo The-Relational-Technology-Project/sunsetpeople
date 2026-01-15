@@ -3,12 +3,12 @@ import { categories } from "@/data/groups";
 
 export function LocalGroups() {
   return (
-    <section id="local-groups" className="py-16 bg-sand">
+    <section id="local-groups" className="py-12 bg-sand">
       <div className="container mx-auto px-6">
         <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4 text-center">
           local groups
         </h2>
-        <p className="text-lg text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+        <p className="text-lg text-muted-foreground text-center max-w-2xl mx-auto mb-8">
           A growing list of groups and ways to join
         </p>
 

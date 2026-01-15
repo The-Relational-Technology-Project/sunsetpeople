@@ -2,7 +2,7 @@ import heroImage from "@/assets/hero-community.jpeg";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[85vh] flex items-start justify-center overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -12,7 +12,7 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 pt-20 pb-24 text-center">
+      <div className="relative z-10 container mx-auto px-6 pt-32 md:pt-40 pb-24 text-center">
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 animate-fade-in drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
           oh hi, people of the Sunset!
         </h1>
