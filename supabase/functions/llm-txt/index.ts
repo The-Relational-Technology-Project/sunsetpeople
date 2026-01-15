@@ -5,7 +5,11 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-// Group data - single source of truth (mirrors src/data/groups.ts)
+// ============================================================================
+// SYNC NOTE: This data must be kept in sync with src/data/groups.ts
+// When adding/removing groups, update BOTH files.
+// The edge function cannot import from src/ directly.
+// ============================================================================
 const categories = [
   {
     name: "outdoors & movement",
