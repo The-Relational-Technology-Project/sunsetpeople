@@ -4,8 +4,7 @@
 User-agent: *
 Allow: /
 
-# AI/LLM crawlers - welcome! See our structured content file:
-# https://onskepiqiwkbulhtxnsx.supabase.co/functions/v1/llm-txt
+# AI/LLM crawlers - welcome! See our structured content at /llm.txt
 
 User-agent: GPTBot
 Allow: /
