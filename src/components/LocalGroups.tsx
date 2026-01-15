@@ -18,11 +18,11 @@ export function LocalGroups() {
               key={category.name}
               className={`${category.bgColor} rounded-2xl overflow-hidden`}
             >
-              <div className="grid md:grid-cols-[300px_1fr] lg:grid-cols-[400px_1fr]">
+              <div className="grid md:grid-cols-[280px_1fr] lg:grid-cols-[340px_1fr] gap-4">
                 {/* Category Title - Left Side */}
                 <div className="p-8 md:p-10 flex items-start">
                   <h3
-                    className={`font-display text-4xl md:text-5xl lg:text-6xl font-bold ${category.textColor} leading-tight`}
+                    className={`font-display text-3xl md:text-4xl lg:text-5xl font-bold ${category.textColor} leading-tight`}
                   >
                     {category.name}
                   </h3>
