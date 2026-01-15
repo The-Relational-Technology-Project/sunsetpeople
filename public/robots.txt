@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 
 # AI/LLM crawlers - welcome! See our structured content file:
-# https://sunsetpeople.org/llm.txt
+# https://onskepiqiwkbulhtxnsx.supabase.co/functions/v1/llm-txt
 
 User-agent: GPTBot
 Allow: /
