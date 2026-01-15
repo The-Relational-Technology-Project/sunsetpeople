@@ -14,7 +14,7 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 pt-32 md:pt-40 pb-24 text-center">
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 animate-fade-in drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
-          oh hi, people of the Sunset!
+          oh hi there!
         </h1>
 
         <p

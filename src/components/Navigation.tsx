@@ -23,7 +23,7 @@ export function Navigation() {
             href="#" 
             className="font-display text-xl font-bold text-foreground hover:text-primary transition-colors"
           >
-            sunset people
+            outer sunset
           </a>
 
           {/* Desktop Navigation */}
