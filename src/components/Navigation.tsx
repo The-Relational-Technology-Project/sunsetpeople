@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "#how-to-make-friends", label: "how to make friends in the sunset" },
   { href: "#local-groups", label: "local groups" },
   { href: "#more-fun", label: "more fun" },
+  { href: "#suggest", label: "suggest a group" },
   { href: "#contact", label: "contact" },
 ];
 
