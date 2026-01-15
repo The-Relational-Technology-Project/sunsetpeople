@@ -14,18 +14,16 @@ interface Group {
 
 interface Category {
   name: string;
-  colorClass: string;
-  bgClass: string;
-  borderClass: string;
+  bgColor: string;
+  textColor: string;
   groups: Group[];
 }
 
 const categories: Category[] = [
   {
-    name: "Outdoors & Movement",
-    colorClass: "text-ocean",
-    bgClass: "bg-ocean/5",
-    borderClass: "border-ocean/20",
+    name: "outdoors & movement",
+    bgColor: "bg-ocean",
+    textColor: "text-sand",
     groups: [
       { name: "Surf Spots", description: "Just paddle out, say hi. The lineup is the neighborhood." },
       { name: "Yogabeach", description: "Multiple overlapping groups doing yoga on the sand. Show up early, find a spot." },
@@ -36,10 +34,9 @@ const categories: Category[] = [
     ],
   },
   {
-    name: "Care & Mutual Aid",
-    colorClass: "text-dune",
-    bgClass: "bg-dune/5",
-    borderClass: "border-dune/20",
+    name: "care & mutual aid",
+    bgColor: "bg-dune",
+    textColor: "text-sand",
     groups: [
       { name: "SF Mutual Aid", description: "Neighbors helping neighbors. Many ways to give and receive support." },
       { name: "Friends of Sunset Dunes", description: "Stewardship of the dunes ecosystem. Restoration events, advocacy, community." },
@@ -47,10 +44,9 @@ const categories: Category[] = [
     ],
   },
   {
-    name: "Making & Creativity",
-    colorClass: "text-charcoal",
-    bgClass: "bg-charcoal/5",
-    borderClass: "border-charcoal/20",
+    name: "making & creativity",
+    bgColor: "bg-charcoal",
+    textColor: "text-sand",
     groups: [
       { name: "Case for Making Workshops", description: "Hands-on craft and making workshops. Build something, meet people." },
       { name: "Black Bird Book Clubs and Workshops", description: "Literary community at the local bookshop. Reading, discussing, connecting." },
@@ -59,10 +55,9 @@ const categories: Category[] = [
     ],
   },
   {
-    name: "Neighborhood & Civic Life",
-    colorClass: "text-fog",
-    bgClass: "bg-fog/10",
-    borderClass: "border-fog/30",
+    name: "neighborhood & civic life",
+    bgColor: "bg-fog",
+    textColor: "text-charcoal",
     groups: [
       { name: "Outer Sunset Neighbors", description: "The neighborhood association. Advocacy, events, and staying informed." },
       { name: "School PTAs", description: "If you have kids in local schools, this is where parents gather." },
@@ -71,10 +66,9 @@ const categories: Category[] = [
     ],
   },
   {
-    name: "Faith & Spiritual Life",
-    colorClass: "text-sunset",
-    bgClass: "bg-sunset/5",
-    borderClass: "border-sunset/20",
+    name: "faith & spiritual life",
+    bgColor: "bg-sunset",
+    textColor: "text-sand",
     groups: [
       { name: "Sunset Church", description: "Welcoming community church in the heart of the neighborhood." },
       { name: "United Irish Cultural Center", description: "Cultural community, events, and gathering place." },
@@ -83,10 +77,9 @@ const categories: Category[] = [
     ],
   },
   {
-    name: "Food & Gathering",
-    colorClass: "text-primary",
-    bgClass: "bg-primary/5",
-    borderClass: "border-primary/20",
+    name: "food & gathering",
+    bgColor: "bg-primary",
+    textColor: "text-sand",
     groups: [
       { name: "Outer Sunset Farmers' Market", description: "Sunday mornings. The place to see and be seen while buying produce." },
       { name: "Woods Outbound Community Nights", description: "Local brewery with regular community events. Good beer, good neighbors." },
@@ -96,7 +89,7 @@ const categories: Category[] = [
 
 export function LocalGroups() {
   return (
-    <section id="local-groups" className="py-20 bg-background">
+    <section id="local-groups" className="py-16 bg-sand">
       <div className="container mx-auto px-6">
         <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4 text-center">
           local groups
@@ -105,47 +98,56 @@ export function LocalGroups() {
           A growing list of groups that make it easier to meet people in the Outer Sunset.
         </p>
 
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className="max-w-6xl mx-auto space-y-4">
           {categories.map((category) => (
-            <div key={category.name} className="space-y-3">
-              {/* Category Header */}
-              <h3 className={`font-display text-2xl md:text-3xl font-semibold ${category.colorClass} px-2`}>
-                {category.name}
-              </h3>
-              
-              {/* Groups Accordion */}
-              <Accordion type="multiple" className="space-y-2">
-                {category.groups.map((group) => (
-                  <AccordionItem
-                    key={group.name}
-                    value={group.name}
-                    className={`${category.bgClass} border ${category.borderClass} rounded-xl px-2 data-[state=open]:shadow-sm transition-shadow`}
-                  >
-                    <AccordionTrigger className="py-4 px-4 hover:no-underline">
-                      <span className="font-display text-lg font-medium text-foreground text-left">
-                        {group.name}
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-4 pb-4">
-                      <div className="flex items-start justify-between gap-4">
-                        <p className="text-muted-foreground leading-relaxed">
-                          {group.description}
-                        </p>
-                        {group.link && (
-                          <a
-                            href={group.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:text-primary/80 transition-colors flex-shrink-0"
-                          >
-                            <ExternalLink size={18} />
-                          </a>
-                        )}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+            <div
+              key={category.name}
+              className={`${category.bgColor} rounded-2xl overflow-hidden`}
+            >
+              <div className="grid md:grid-cols-[300px_1fr] lg:grid-cols-[400px_1fr]">
+                {/* Category Title - Left Side */}
+                <div className="p-8 md:p-10 flex items-start">
+                  <h3 className={`font-display text-4xl md:text-5xl lg:text-6xl font-bold ${category.textColor} leading-tight`}>
+                    {category.name}
+                  </h3>
+                </div>
+
+                {/* Groups List - Right Side */}
+                <div className={`${category.textColor} px-6 md:px-8 pb-6 md:py-6`}>
+                  <Accordion type="multiple" className="space-y-0">
+                    {category.groups.map((group, index) => (
+                      <AccordionItem
+                        key={group.name}
+                        value={group.name}
+                        className={`border-b border-current/20 ${index === 0 ? 'border-t' : ''}`}
+                      >
+                        <AccordionTrigger className="py-5 hover:no-underline group">
+                          <span className="font-display text-lg md:text-xl font-medium text-left">
+                            {group.name}
+                          </span>
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-5">
+                          <div className="flex items-start justify-between gap-4">
+                            <p className="text-base opacity-90 leading-relaxed">
+                              {group.description}
+                            </p>
+                            {group.link && (
+                              <a
+                                href={group.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="opacity-80 hover:opacity-100 transition-opacity flex-shrink-0 underline"
+                              >
+                                {group.link}
+                              </a>
+                            )}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
+              </div>
             </div>
           ))}
         </div>
