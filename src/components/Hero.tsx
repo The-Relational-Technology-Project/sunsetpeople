@@ -1,13 +1,10 @@
 import heroImage from "@/assets/hero-community.jpeg";
-
 export function Hero() {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${heroImage})`
+    }}>
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/40 to-background" />
       </div>
 
@@ -17,10 +14,11 @@ export function Hero() {
           oh hi, people of the Sunset
         </h1>
         
-        <p className="text-xl md:text-2xl text-white/95 max-w-2xl mx-auto animate-fade-in drop-shadow-md bg-charcoal/30 backdrop-blur-sm rounded-xl px-6 py-4" style={{ animationDelay: "0.2s" }}>
-          A neighborhood guide to finding community in the Outer Sunset.
+        <p className="text-xl md:text-2xl text-white/95 max-w-2xl mx-auto animate-fade-in drop-shadow-md bg-charcoal/30 backdrop-blur-sm rounded-xl px-6 py-4" style={{
+        animationDelay: "0.2s"
+      }}>
+          This is a neighborhood guide to help more of us find community                          
         </p>
       </div>
-    </section>
-  );
+    </section>;
 }
