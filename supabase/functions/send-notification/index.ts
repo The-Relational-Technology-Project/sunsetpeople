@@ -63,7 +63,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const emailResponse = await resend.emails.send({
       from: "Outer Sunset Guide <hello@relationaltechproject.org>",
-      to: ["hello@relationaltechproject.org"],
+      to: ["josh@relationaltechproject.org"],
       subject,
       html,
     });
