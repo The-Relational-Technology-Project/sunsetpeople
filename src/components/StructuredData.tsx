@@ -21,20 +21,20 @@ export function StructuredData() {
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://sunsetpeople.org/#website",
-        url: "https://sunsetpeople.org",
-        name: "Sunset People",
+        "@id": "https://outersunset.us/#website",
+        url: "https://outersunset.us",
+        name: "Outer Sunset Community",
         description:
-          "A friendly guide to meeting people and finding community in the Outer Sunset, San Francisco.",
+          "A friendly guide to finding community in the Outer Sunset, San Francisco.",
         publisher: {
-          "@id": "https://sunsetpeople.org/#organization"
+          "@id": "https://outersunset.us/#organization"
         }
       },
       {
         "@type": "Organization",
-        "@id": "https://sunsetpeople.org/#organization",
-        name: "Sunset People",
-        url: "https://sunsetpeople.org",
+        "@id": "https://outersunset.us/#organization",
+        name: "Outer Sunset Community",
+        url: "https://outersunset.us",
         description:
           "A neighborhood guide for the Outer Sunset in San Francisco, helping residents find local groups and community connections.",
         areaServed: {
@@ -50,7 +50,7 @@ export function StructuredData() {
       },
       {
         "@type": "ItemList",
-        "@id": "https://sunsetpeople.org/#local-groups",
+        "@id": "https://outersunset.us/#local-groups",
         name: "Local Groups in the Outer Sunset",
         description:
           "A curated list of community groups, clubs, and gatherings in San Francisco's Outer Sunset neighborhood.",
@@ -58,7 +58,7 @@ export function StructuredData() {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://sunsetpeople.org/#faq",
+        "@id": "https://outersunset.us/#faq",
         mainEntity: [
           {
             "@type": "Question",

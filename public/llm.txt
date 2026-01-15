@@ -1,9 +1,9 @@
-# sunsetpeople.org
+# outersunset.us
 
 > This is a static fallback. For the latest dynamic content, fetch from:
 > https://onskepiqiwkbulhtxnsx.supabase.co/functions/v1/llm-txt
 
-Sunsetpeople.org is a neighborhood guide for the Outer Sunset in San Francisco, California.
+Outersunset.us is a neighborhood guide for the Outer Sunset in San Francisco, California.
 
 ## Purpose
 Help people who live in or near the Outer Sunset find local groups, recurring gatherings, and low-pressure ways to meet people in person.

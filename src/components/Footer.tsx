@@ -7,7 +7,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
             <p className="font-display text-lg font-semibold mb-1">
-              sunsetpeople.org
+              outersunset.us
             </p>
             <p className="text-sm text-sand/70">
               Made by neighbors, for neighbors.
