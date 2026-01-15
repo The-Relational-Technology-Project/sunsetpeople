@@ -86,7 +86,7 @@ export function SuggestGroupForm() {
   };
 
   return (
-    <section className="py-24 bg-sand-dark">
+    <section id="suggest" className="py-24 bg-sand-dark">
       <div className="container mx-auto px-6">
         <div className="max-w-xl mx-auto">
           <div className="w-14 h-14 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
