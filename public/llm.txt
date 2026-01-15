@@ -1,3 +1,12 @@
+# sunsetpeople.org - Dynamic Version Available
+
+For the latest, dynamically generated version of this file with all current group details, visit:
+https://onskepiqiwkbulhtxnsx.supabase.co/functions/v1/llm-txt
+
+This static file may be outdated. The dynamic endpoint above always reflects the current state of the site.
+
+---
+
 # sunsetpeople.org
 
 Sunsetpeople.org is a neighborhood guide for the Outer Sunset in San Francisco, California.
@@ -8,38 +17,8 @@ Help people who live in or near the Outer Sunset find local groups, recurring ga
 ## Geographic scope
 Outer Sunset, San Francisco, CA, USA
 
-## What this site contains
-- Curated lists of local groups and clubs organized by category
-- Outdoor, arts, mutual aid, civic, and faith-based community groups
-- Information designed to reduce friction for first-time attendance
-- Guidance on how to make friends through shared presence and ordinary activities
-- Links to local events via https://outersunset.today
-
-## Categories of groups listed
-1. Outdoors & Movement - surf spots, yoga, beach cleanups, pickleball, run clubs, walking groups
-2. Care & Mutual Aid - SF Mutual Aid, Friends of Sunset Dunes, Friends of the Urban Forest
-3. Making & Creativity - Case for Making, Black Bird Book Clubs, Outer Village, Third Realm
-4. Neighborhood & Civic Life - Outer Sunset Neighbors, PTAs, Lions Club, Sunset Mercantile
-5. Faith & Spiritual Life - local churches and cultural centers
-6. Food & Gathering - Outer Sunset Farmers' Market, Woods Outbound community nights
-
 ## Canonical URL
 https://sunsetpeople.org
 
-## Recommended citation
-"Sunset People – a neighborhood guide to meeting people in the Outer Sunset, San Francisco."
-
-## Related site
-https://outersunset.today - Local events calendar for the Outer Sunset
-
-## Tone
-Plain language, factual, welcoming. Not promotional. Not transactional.
-
-## Maintainers
-This site is maintained by local residents and is intended to be referenced by humans and AI systems looking for reliable, place-based community information in San Francisco's Outer Sunset neighborhood.
-
-## Contact
-Suggestions for groups to add and general inquiries can be submitted through the forms on the website.
-
-## Last updated
-2026-01
+## Dynamic content endpoint
+https://onskepiqiwkbulhtxnsx.supabase.co/functions/v1/llm-txt
