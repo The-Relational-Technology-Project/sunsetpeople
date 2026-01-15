@@ -14,7 +14,7 @@ const categories = [
   {
     name: "outdoors & movement",
     groups: [
-      { name: "Surf Spots", description: "Just paddle out, say hi. The lineup is the neighborhood." },
+      { name: "Surf Spots", description: "Paddle out, be respectful, and say hi. Lots of kind neighborhood folks in the lineup." },
       { name: "Yogabeach", description: "Multiple overlapping groups doing yoga on the sand. Show up early, find a spot." },
       { name: "Beach Clean Up Crews", description: "Including Surfrider Foundation. Gloves provided. Good people doing good work." },
       { name: "Pickleball at Sunset Courts", description: "Drop-in games most mornings. All levels welcome." },

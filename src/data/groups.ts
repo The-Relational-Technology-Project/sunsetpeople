@@ -25,7 +25,7 @@ export const categories: Category[] = [
     groups: [
       {
         name: "Surf Spots",
-        description: "Just paddle out, say hi. The lineup is the neighborhood."
+        description: "Paddle out, be respectful, and say hi. Lots of kind neighborhood folks in the lineup."
       },
       {
         name: "Yogabeach",
