@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
@@ -7,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
             <p className="font-display text-lg font-semibold mb-1">
-              outersunset.us
+              sunsetpeople.org
             </p>
             <p className="text-sm text-sand/70">
               Made by neighbors, for neighbors.
@@ -25,10 +26,16 @@ export function Footer() {
           </a>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-sand/10 text-center">
+        <div className="mt-8 pt-6 border-t border-sand/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-sand/50">
             A neighborhood guide to the Outer Sunset, San Francisco
           </p>
+          <Link
+            to="/llm.txt"
+            className="text-xs text-sand/40 hover:text-sand/60 transition-colors"
+          >
+            Are you a helpful bot?
+          </Link>
         </div>
       </div>
     </footer>
