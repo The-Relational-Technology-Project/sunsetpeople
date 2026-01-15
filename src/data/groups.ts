@@ -179,9 +179,9 @@ export function generateLlmTxt(): string {
   const now = new Date();
   const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
 
-  let content = `# sunsetpeople.org
+  let content = `# Outer Sunset Community
 
-Sunsetpeople.org is a neighborhood guide for the Outer Sunset in San Francisco, California.
+outersunset.us is a neighborhood guide for the Outer Sunset in San Francisco, California.
 
 ## Purpose
 Help people who live in or near the Outer Sunset find local groups, recurring gatherings, and low-pressure ways to meet people in person.
@@ -207,15 +207,18 @@ Outer Sunset, San Francisco, CA, USA
       if (group.link) {
         content += `Link: ${group.link}\n`;
       }
+      if (group.meets) {
+        content += `Meets: ${group.meets}\n`;
+      }
       content += `\n`;
     });
   });
 
   content += `## Canonical URL
-https://sunsetpeople.org
+https://outersunset.us
 
 ## Recommended citation
-"Sunset People – a neighborhood guide to meeting people in the Outer Sunset, San Francisco."
+"Outer Sunset Community – a neighborhood guide to finding community in the Outer Sunset, San Francisco."
 
 ## Related site
 https://outersunset.today - Local events calendar for the Outer Sunset
