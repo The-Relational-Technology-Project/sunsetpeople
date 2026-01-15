@@ -30,10 +30,12 @@ export const categories: Category[] = [
       {
         name: "Yogabeach",
         description: "Local studio with many types of classes, events, workshops, and groups.",
+        link: "https://www.yogabeachsf.com/",
       },
       {
         name: "Beach Clean Up Crews",
         description: "Check out Surfrider Foundation and look for friendly folks with orange vests and buckets!",
+        link: "https://sf.surfrider.org/",
       },
       {
         name: "Pickleball at Sunset Courts",
@@ -43,6 +45,7 @@ export const categories: Category[] = [
         name: "Sunset Dunes Run Club",
         description:
           "Sunset Dunes parkrun takes place every Saturday at 8:00am. Free weekly 5km run/jog/walk at your own pace. Everyone is welcome.",
+        link: "https://www.parkrun.us/sunsetdunes/",
       },
       {
         name: "Walking Groups",
@@ -58,10 +61,12 @@ export const categories: Category[] = [
       {
         name: "SF Mutual Aid",
         description: "Neighbors helping neighbors. Many ways to give and receive support.",
+        link: "https://www.sfmutualaid.com/",
       },
       {
         name: "Friends of Sunset Dunes",
         description: "Stewards and champions of the park ecosystem. Restoration events, advocacy, community.",
+        link: "https://sunsetdunes.org/",
       },
       {
         name: "Friends of the Urban Forest",
@@ -77,18 +82,22 @@ export const categories: Category[] = [
       {
         name: "Case for Making Workshops",
         description: "Hands-on craft and making workshops. Create and learn together.",
+        link: "https://caseformaking.com/",
       },
       {
         name: "Black Bird Book Clubs and Workshops",
         description: "Literary community at the local bookshop. Reading, discussing, connecting.",
+        link: "https://blackbirdsf.com/",
       },
       {
         name: "Outer Village",
         description: "Community space, classes, workshops, and events, with a focus on the parent community.",
+        link: "https://www.outervillagesf.com/",
       },
       {
         name: "Third Realm",
         description: "Third space in the Inner Sunset for work, play, and community.",
+        link: "https://www.ourthirdrealm.com/",
       },
     ],
   },
@@ -100,6 +109,7 @@ export const categories: Category[] = [
       {
         name: "Outer Sunset Neighbors",
         description: "A neighborhood nonprofit focused on safe streets, green spaces, and thriving local businesses.",
+        link: "https://sunsetneighbors.org/",
       },
       {
         name: "School PTAs",
@@ -108,11 +118,13 @@ export const categories: Category[] = [
       {
         name: "Lions Club – SF Parkside / Sunset",
         description: "Service club for community projects and fellowship.",
+        link: "https://e-clubhouse.org/sites/sfulc/",
       },
       {
         name: "Sunset Mercantile",
         description:
           "Local business collective. Supporting the shops that make the neighborhood and the local farmers market.",
+        link: "https://sunsetmercantilesf.com/",
       },
     ],
   },
@@ -151,6 +163,7 @@ export const categories: Category[] = [
       {
         name: "Woods Outbound Community Nights",
         description: "One of our local bars with regular community events.",
+        link: "https://www.woodsbeer.com/outbound",
       },
     ],
   },
