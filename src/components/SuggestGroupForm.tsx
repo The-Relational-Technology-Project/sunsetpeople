@@ -55,6 +55,18 @@ export function SuggestGroupForm() {
 
       if (error) throw error;
 
+      // Send email notification
+      await supabase.functions.invoke("send-notification", {
+        body: {
+          type: "group_suggestion",
+          name: values.name,
+          email: values.email,
+          group_name: values.group_name,
+          group_link: values.group_link || undefined,
+          note: values.note || undefined,
+        },
+      });
+
       toast({
         title: "Thank you!",
         description: "We'll review your suggestion and may add it to the list.",
