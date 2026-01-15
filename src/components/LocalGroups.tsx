@@ -35,9 +35,7 @@ export function LocalGroups() {
                       <AccordionItem
                         key={group.name}
                         value={group.name}
-                        className={`border-b border-current/20 ${
-                          index === 0 ? "border-t" : ""
-                        }`}
+                        className="border-none"
                       >
                         <AccordionTrigger className="py-5 hover:no-underline group">
                           <span className="font-display text-lg md:text-xl font-medium text-left">
