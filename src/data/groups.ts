@@ -1,7 +1,13 @@
+// ============================================================================
+// SINGLE SOURCE OF TRUTH for group data
+// Also mirrored in: supabase/functions/llm-txt/index.ts (keep in sync manually)
+// ============================================================================
+
 export interface Group {
   name: string;
   description: string;
   link?: string;
+  meets?: string; // Optional: plain-language timing like "Sunday mornings" or "Weekly"
 }
 
 export interface Category {
