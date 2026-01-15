@@ -25,29 +25,30 @@ export const categories: Category[] = [
     groups: [
       {
         name: "Surf Spots",
-        description: "Paddle out, be respectful, and say hi. Lots of kind neighborhood folks in the lineup."
+        description: "Paddle out, be respectful, and say hi. Lots of kind neighborhood folks in the lineup.",
       },
       {
         name: "Yogabeach",
-        description: "Multiple overlapping groups doing yoga on the sand. Show up early, find a spot."
+        description: "Local studio with many types of classes, events, workshops, and groups.",
       },
       {
         name: "Beach Clean Up Crews",
-        description: "Including Surfrider Foundation. Gloves provided. Good people doing good work."
+        description: "Check out Surfrider Foundation and look for friendly folks with orange vests and buckets!",
       },
       {
         name: "Pickleball at Sunset Courts",
-        description: "Drop-in games most mornings. All levels welcome."
+        description: "A solid way to meet folks of all ages and skill levels.",
       },
       {
-        name: "Sunset Dunes Run Clubs",
-        description: "Groups that run the dunes and trails. Check local running stores for schedules."
+        name: "Sunset Dunes Run Club",
+        description:
+          "Sunset Dunes parkrun takes place every Saturday at 8:00am. Free weekly 5km run/jog/walk at your own pace. Everyone is welcome.",
       },
       {
-        name: "Walking Clubs",
-        description: "Low-key walking groups for all paces. Fresh air, good conversation."
-      }
-    ]
+        name: "Walking Groups",
+        description: "Flyers are usually posted near Black Bird on Irving and nd Andytown on Lawton.",
+      },
+    ],
   },
   {
     name: "care & mutual aid",
@@ -56,17 +57,17 @@ export const categories: Category[] = [
     groups: [
       {
         name: "SF Mutual Aid",
-        description: "Neighbors helping neighbors. Many ways to give and receive support."
+        description: "Neighbors helping neighbors. Many ways to give and receive support.",
       },
       {
         name: "Friends of Sunset Dunes",
-        description: "Stewardship of the dunes ecosystem. Restoration events, advocacy, community."
+        description: "Stewards and champions of the park ecosystem. Restoration events, advocacy, community.",
       },
       {
         name: "Friends of the Urban Forest",
-        description: "Tree planting and neighborhood greening. Hands-on, visible impact."
-      }
-    ]
+        description: "Tree planting and neighborhood greening.",
+      },
+    ],
   },
   {
     name: "making & creativity",
@@ -75,21 +76,21 @@ export const categories: Category[] = [
     groups: [
       {
         name: "Case for Making Workshops",
-        description: "Hands-on craft and making workshops. Build something, meet people."
+        description: "Hands-on craft and making workshops. Create and learn together.",
       },
       {
         name: "Black Bird Book Clubs and Workshops",
-        description: "Literary community at the local bookshop. Reading, discussing, connecting."
+        description: "Literary community at the local bookshop. Reading, discussing, connecting.",
       },
       {
         name: "Outer Village",
-        description: "Community space and gathering point. Events, workshops, and local happenings."
+        description: "Community space, classes, workshops, and events, with a focus on the parent community.",
       },
       {
         name: "Third Realm",
-        description: "Creative community and maker space. Art, craft, and good company."
-      }
-    ]
+        description: "Third space in the Inner Sunset for work, play, and community.",
+      },
+    ],
   },
   {
     name: "neighborhood & civic life",
@@ -98,21 +99,22 @@ export const categories: Category[] = [
     groups: [
       {
         name: "Outer Sunset Neighbors",
-        description: "The neighborhood association. Advocacy, events, and staying informed."
+        description: "A neighborhood nonprofit focused on safe streets, green spaces, and thriving local businesses.",
       },
       {
         name: "School PTAs",
-        description: "If you have kids in local schools, this is where parents gather."
+        description: "If you have kids in local schools, this is where parents gather and organize.",
       },
       {
         name: "Lions Club – SF Parkside / Sunset",
-        description: "Service club with deep neighborhood roots. Community projects and fellowship."
+        description: "Service club for community projects and fellowship.",
       },
       {
         name: "Sunset Mercantile",
-        description: "Local business collective. Supporting the shops that make the neighborhood."
-      }
-    ]
+        description:
+          "Local business collective. Supporting the shops that make the neighborhood and the local farmers market.",
+      },
+    ],
   },
   {
     name: "faith & spiritual life",
@@ -121,21 +123,21 @@ export const categories: Category[] = [
     groups: [
       {
         name: "Sunset Church",
-        description: "Welcoming community church in the heart of the neighborhood."
+        description: "Community church in the heart of the neighborhood.",
       },
       {
         name: "United Irish Cultural Center",
-        description: "Cultural community, events, and gathering place."
+        description: "Cultural community with dance classes, events, and gatherings.",
       },
       {
         name: "St. Gabriel's Church",
-        description: "Catholic parish with an active community."
+        description: "Catholic parish in our community.",
       },
       {
         name: "Holy Name of Jesus Parish",
-        description: "Another neighborhood Catholic parish. Regular services and community events."
-      }
-    ]
+        description: "Neighborhood Catholic parish. Regular services and community events.",
+      },
+    ],
   },
   {
     name: "food & gathering",
@@ -144,26 +146,26 @@ export const categories: Category[] = [
     groups: [
       {
         name: "Outer Sunset Farmers' Market",
-        description: "Sunday mornings. The place to see and be seen while buying produce."
+        description: "Sunday mornings. The place to see and be seen while buying produce.",
       },
       {
         name: "Woods Outbound Community Nights",
-        description: "Local brewery with regular community events. Good beer, good neighbors."
-      }
-    ]
-  }
+        description: "One of our local bars with regular community events.",
+      },
+    ],
+  },
 ];
 
 // Helper to get all groups flat
 export function getAllGroups(): Group[] {
-  return categories.flatMap(cat => cat.groups);
+  return categories.flatMap((cat) => cat.groups);
 }
 
 // Helper to generate LLM-friendly text
 export function generateLlmTxt(): string {
   const now = new Date();
-  const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
-  
+  const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
+
   let content = `# sunsetpeople.org
 
 Sunsetpeople.org is a neighborhood guide for the Outer Sunset in San Francisco, California.
@@ -186,7 +188,7 @@ Outer Sunset, San Francisco, CA, USA
 
   categories.forEach((category, idx) => {
     content += `### ${idx + 1}. ${category.name.charAt(0).toUpperCase() + category.name.slice(1)}\n\n`;
-    category.groups.forEach(group => {
+    category.groups.forEach((group) => {
       content += `**${group.name}**\n`;
       content += `${group.description}\n`;
       if (group.link) {
