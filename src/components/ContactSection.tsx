@@ -78,7 +78,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section id="contact" className="py-24 bg-background scroll-mt-20">
       <div className="container mx-auto px-6">
         <div className="max-w-xl mx-auto">
           <div className="w-14 h-14 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-6">

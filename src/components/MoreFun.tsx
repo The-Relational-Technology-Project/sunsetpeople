@@ -3,7 +3,7 @@ import oceanLight from "@/assets/ocean-light.jpeg";
 
 export function MoreFun() {
   return (
-    <section id="more-fun" className="py-24 bg-primary/10 relative overflow-hidden">
+    <section id="more-fun" className="py-24 bg-primary/10 relative overflow-hidden scroll-mt-20">
       {/* Subtle background image */}
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-10"
