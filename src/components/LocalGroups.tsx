@@ -4,6 +4,7 @@ import { categories } from "@/data/groups";
 function formatLink(url: string): string {
   return url
     .replace(/^https?:\/\//, '')
+    .replace(/^www\./, '')
     .replace(/\/$/, '');
 }
 
