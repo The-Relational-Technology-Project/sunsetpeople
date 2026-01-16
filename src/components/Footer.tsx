@@ -30,12 +30,23 @@ export function Footer() {
           <p className="text-xs text-sand/50">
             A neighborhood guide to the Outer Sunset, San Francisco
           </p>
-          <Link
-            to="/llm.txt"
-            className="text-xs text-sand/40 hover:text-sand/60 transition-colors"
-          >
-            Are you a helpful bot?
-          </Link>
+          <div className="flex items-center gap-4">
+            <a
+              href={`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/neighborhood-api`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-sand/40 hover:text-sand/60 transition-colors"
+              title="Neighborhood API"
+            >
+              /api
+            </a>
+            <Link
+              to="/llm.txt"
+              className="text-xs text-sand/40 hover:text-sand/60 transition-colors"
+            >
+              Are you a helpful bot?
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
