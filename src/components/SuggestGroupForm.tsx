@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import { useMathCaptcha } from "@/hooks/use-math-captcha";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,7 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Loader2, Plus } from "lucide-react";
+import { Loader2, Plus, RefreshCw } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -23,12 +24,14 @@ const formSchema = z.object({
   group_name: z.string().trim().min(1, "Group name is required").max(200, "Group name must be less than 200 characters"),
   group_link: z.string().trim().url("Must be a valid URL").max(500, "Link must be less than 500 characters").optional().or(z.literal("")),
   note: z.string().trim().max(1000, "Note must be less than 1000 characters").optional(),
+  captcha: z.string().trim().min(1, "Please solve the math problem"),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export function SuggestGroupForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { question, validate, refresh } = useMathCaptcha();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -38,10 +41,19 @@ export function SuggestGroupForm() {
       group_name: "",
       group_link: "",
       note: "",
+      captcha: "",
     },
   });
 
   const onSubmit = async (values: FormValues) => {
+    // Validate captcha first
+    if (!validate(values.captcha)) {
+      form.setError("captcha", { message: "Incorrect answer, please try again" });
+      refresh();
+      form.setValue("captcha", "");
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
@@ -73,6 +85,7 @@ export function SuggestGroupForm() {
       });
       
       form.reset();
+      refresh();
     } catch (error) {
       console.error("Error submitting group suggestion:", error);
       toast({
@@ -170,6 +183,39 @@ export function SuggestGroupForm() {
                       <Textarea 
                         placeholder="Tell us a bit about this group — when they meet, what it's like to show up for the first time..."
                         className="min-h-[100px] resize-none"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="captcha"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2">
+                      <span>Quick check: What is {question}?</span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          refresh();
+                          form.setValue("captcha", "");
+                        }}
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                        aria-label="Get a new math problem"
+                      >
+                        <RefreshCw className="w-3.5 h-3.5" />
+                      </button>
+                    </FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="text" 
+                        inputMode="numeric"
+                        placeholder="Your answer" 
+                        autoComplete="off"
                         {...field} 
                       />
                     </FormControl>
