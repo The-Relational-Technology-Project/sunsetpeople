@@ -2,3 +2,9 @@ project_id = "onskepiqiwkbulhtxnsx"
 
 [functions.send-notification]
 verify_jwt = false
+
+[functions.llm-txt]
+verify_jwt = false
+
+[functions.neighborhood-api]
+verify_jwt = false
