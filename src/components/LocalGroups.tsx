@@ -1,6 +1,12 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { categories } from "@/data/groups";
 
+function formatLink(url: string): string {
+  return url
+    .replace(/^https?:\/\//, '')
+    .replace(/\/$/, '');
+}
+
 export function LocalGroups() {
   return (
     <section id="local-groups" className="py-12 bg-sand scroll-mt-20">
@@ -31,7 +37,7 @@ export function LocalGroups() {
                 {/* Groups List - Right Side */}
                 <div className={`${category.textColor} px-6 md:px-8 pb-6 md:py-6`}>
                   <Accordion type="multiple" className="space-y-0">
-                    {category.groups.map((group, index) => (
+                    {category.groups.map((group) => (
                       <AccordionItem
                         key={group.name}
                         value={group.name}
@@ -43,21 +49,19 @@ export function LocalGroups() {
                           </span>
                         </AccordionTrigger>
                         <AccordionContent className="pb-5">
-                          <div className="flex items-start justify-between gap-4">
-                            <p className="text-base opacity-90 leading-relaxed">
-                              {group.description}
-                            </p>
-                            {group.link && (
-                              <a
-                                href={group.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="opacity-80 hover:opacity-100 transition-opacity flex-shrink-0 underline"
-                              >
-                                {group.link}
-                              </a>
-                            )}
-                          </div>
+                          <p className="text-base opacity-90 leading-relaxed">
+                            {group.description}
+                          </p>
+                          {group.link && (
+                            <a
+                              href={group.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm opacity-70 hover:opacity-100 transition-opacity underline mt-2 inline-block"
+                            >
+                              {formatLink(group.link)}
+                            </a>
+                          )}
                         </AccordionContent>
                       </AccordionItem>
                     ))}
