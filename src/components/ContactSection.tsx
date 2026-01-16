@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import { useMathCaptcha } from "@/hooks/use-math-captcha";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,18 +16,20 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Loader2, Mail } from "lucide-react";
+import { Loader2, Mail, RefreshCw } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
   message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
+  captcha: z.string().trim().min(1, "Please solve the math problem"),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { question, validate, refresh } = useMathCaptcha();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -34,10 +37,19 @@ export function ContactSection() {
       name: "",
       email: "",
       message: "",
+      captcha: "",
     },
   });
 
   const onSubmit = async (values: FormValues) => {
+    // Validate captcha first
+    if (!validate(values.captcha)) {
+      form.setError("captcha", { message: "Incorrect answer, please try again" });
+      refresh();
+      form.setValue("captcha", "");
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
@@ -65,6 +77,7 @@ export function ContactSection() {
       });
       
       form.reset();
+      refresh();
     } catch (error) {
       console.error("Error submitting contact form:", error);
       toast({
@@ -134,6 +147,39 @@ export function ContactSection() {
                       <Textarea 
                         placeholder="What's on your mind?"
                         className="min-h-[120px] resize-none"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="captcha"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2">
+                      <span>Quick check: What is {question}?</span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          refresh();
+                          form.setValue("captcha", "");
+                        }}
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                        aria-label="Get a new math problem"
+                      >
+                        <RefreshCw className="w-3.5 h-3.5" />
+                      </button>
+                    </FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="text" 
+                        inputMode="numeric"
+                        placeholder="Your answer" 
+                        autoComplete="off"
                         {...field} 
                       />
                     </FormControl>
