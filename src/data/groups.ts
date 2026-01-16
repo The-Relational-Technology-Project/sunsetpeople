@@ -72,6 +72,10 @@ export const categories: Category[] = [
         name: "Friends of the Urban Forest",
         description: "Tree planting and neighborhood greening.",
       },
+      {
+        name: "Outer Mamas and Outer Dadas",
+        description: "Group chats and gatherings for dads and moms in the Sunset and Richmond. Ask a member or share your WhatsApp number in the contact message and someone will add you!",
+      },
     ],
   },
   {
