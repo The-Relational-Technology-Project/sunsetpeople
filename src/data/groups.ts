@@ -59,7 +59,7 @@ export const categories: Category[] = [
     textColor: "text-white",
     groups: [
       {
-        name: "SF Mutual Aid",
+        name: "SF Mutual Support",
         description: "Neighbors helping neighbors. Many ways to give and receive support.",
         link: "https://www.sfmutualaid.com/",
       },
