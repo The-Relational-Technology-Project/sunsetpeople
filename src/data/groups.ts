@@ -54,7 +54,7 @@ export const categories: Category[] = [
     ],
   },
   {
-    name: "care & mutual aid",
+    name: "care for people and place",
     bgColor: "bg-dune",
     textColor: "text-white",
     groups: [
