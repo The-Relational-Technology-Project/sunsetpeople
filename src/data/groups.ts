@@ -39,7 +39,7 @@ export const categories: Category[] = [
       },
       {
         name: "Pickleball at Sunset Courts",
-        description: "A solid way to meet folks of all ages and skill levels.",
+        description: "Take some intro classes at Goldman Center or Dink SF, then play any day at Larsen Playground's beginner courts. Folks are very friendly!",
       },
       {
         name: "Sunset Dunes Run Club",
