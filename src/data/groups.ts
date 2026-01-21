@@ -21,7 +21,7 @@ export const categories: Category[] = [
   {
     name: "outdoors & movement",
     bgColor: "bg-ocean",
-    textColor: "text-white",
+    textColor: "text-charcoal",
     groups: [
       {
         name: "Surf Spots",
@@ -81,7 +81,7 @@ export const categories: Category[] = [
   {
     name: "making & creativity",
     bgColor: "bg-charcoal",
-    textColor: "text-white",
+    textColor: "text-sand",
     groups: [
       {
         name: "Case for Making Workshops",
