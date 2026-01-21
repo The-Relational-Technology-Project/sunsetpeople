@@ -64,9 +64,9 @@ export const categories: Category[] = [
         link: "https://www.sfmutualaid.com/",
       },
       {
-        name: "Friends of Sunset Dunes",
-        description: "Stewards and champions of the park ecosystem. Restoration events, advocacy, community.",
-        link: "https://sunsetdunes.org/",
+        name: "Far Out West Community Garden",
+        description: "Community garden, outdoor film series, and neighbor coffee hangouts. On Judah St., between 43rd and 44th Ave.",
+        link: "https://faroutwestcommunity.org/",
       },
       {
         name: "Friends of the Urban Forest",
