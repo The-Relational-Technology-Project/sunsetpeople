@@ -51,6 +51,11 @@ export const categories: Category[] = [
         name: "Walking Groups",
         description: "Flyers are usually posted near Black Bird on Irving and nd Andytown on Lawton.",
       },
+      {
+        name: "Children's Nature Circle",
+        description: "Regular time for families to gather outdoors. Connect with the more than human world through songs, stories, and hands-on experiences. Friday mornings, 10:00am-12:00pm, on the west lawn of Blue Boat playground.",
+        link: "https://sfnaturecircle.com/",
+      },
     ],
   },
   {
@@ -75,6 +80,11 @@ export const categories: Category[] = [
       {
         name: "Outer Mamas and Outer Dadas",
         description: "Group chats and gatherings for dads and moms in the Sunset and Richmond. Ask a member or share your WhatsApp number in the contact message and someone will add you!",
+      },
+      {
+        name: "Green Outer Sunset",
+        description: "This group helps people rip up the concrete in their front yards to plant gardens and sidewalk trees. They'll support you every step of the way.",
+        link: "https://greenoutersunset.org/",
       },
     ],
   },
