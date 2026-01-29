@@ -38,7 +38,7 @@ export function LocalGroups() {
                 {/* Groups List - Right Side */}
                 <div className={`${category.textColor} px-6 md:px-8 pb-6 md:py-6`}>
                   <Accordion type="multiple" className="space-y-0">
-                    {category.groups.map((group) => (
+                    {[...category.groups].sort((a, b) => a.name.localeCompare(b.name)).map((group) => (
                       <AccordionItem
                         key={group.name}
                         value={group.name}
