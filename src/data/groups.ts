@@ -113,6 +113,11 @@ export const categories: Category[] = [
         description: "Third space in the Inner Sunset for work, play, and community.",
         link: "https://www.ourthirdrealm.com/",
       },
+      {
+        name: "Sealevel",
+        description: "On evenings and weekends, Sealevel transforms into a vibrant creative hub and welcoming community gathering space, where all are invited to come together, exchange ideas, share skills and resources, and express their creativity in an inclusive environment.",
+        link: "https://sealevelsf.com/",
+      },
     ],
   },
   {
