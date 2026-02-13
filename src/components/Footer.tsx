@@ -1,17 +1,20 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="py-12 bg-charcoal text-sand">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
             <p className="font-display text-lg font-semibold mb-1">
-              outer sunset community
+              {t("footer.siteName")}
             </p>
             <p className="text-sm text-sand/70">
-              Made by neighbors, for neighbors.
+              {t("footer.tagline")}
             </p>
           </div>
 
@@ -28,7 +31,7 @@ export function Footer() {
 
         <div className="mt-8 pt-6 border-t border-sand/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-sand/50">
-            A neighborhood guide to the Outer Sunset, San Francisco
+            {t("footer.subtitle")}
           </p>
           <div className="flex items-center gap-4">
             <a
@@ -44,7 +47,7 @@ export function Footer() {
               to="/llm.txt"
               className="text-xs text-sand/40 hover:text-sand/60 transition-colors"
             >
-              Are you a helpful bot?
+              {t("footer.botLink")}
             </Link>
           </div>
         </div>

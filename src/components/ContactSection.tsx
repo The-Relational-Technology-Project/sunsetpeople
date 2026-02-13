@@ -5,6 +5,7 @@ import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import { useMathCaptcha } from "@/hooks/use-math-captcha";
+import { useLanguage } from "@/i18n/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -30,6 +31,7 @@ type FormValues = z.infer<typeof formSchema>;
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { question, validate, refresh } = useMathCaptcha();
+  const { t } = useLanguage();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -42,7 +44,6 @@ export function ContactSection() {
   });
 
   const onSubmit = async (values: FormValues) => {
-    // Validate captcha first
     if (!validate(values.captcha)) {
       form.setError("captcha", { message: "Incorrect answer, please try again" });
       refresh();
@@ -61,7 +62,6 @@ export function ContactSection() {
 
       if (error) throw error;
 
-      // Send email notification
       await supabase.functions.invoke("send-notification", {
         body: {
           type: "contact",
@@ -72,8 +72,8 @@ export function ContactSection() {
       });
 
       toast({
-        title: "Message sent!",
-        description: "Thanks for reaching out. We'll get back to you soon.",
+        title: t("contact.successTitle"),
+        description: t("contact.successDesc"),
       });
       
       form.reset();
@@ -81,8 +81,8 @@ export function ContactSection() {
     } catch (error) {
       console.error("Error submitting contact form:", error);
       toast({
-        title: "Something went wrong",
-        description: "Please try again later.",
+        title: t("contact.errorTitle"),
+        description: t("contact.errorDesc"),
         variant: "destructive",
       });
     } finally {
@@ -99,12 +99,12 @@ export function ContactSection() {
           </div>
 
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4 text-center">
-            say hi
+            {t("contact.title")}
           </h2>
           <p className="text-muted-foreground text-center mb-10">
-            Questions, ideas, or just want to say hi?
+            {t("contact.subtitle1")}
             <br />
-            We would love to hear from you.
+            {t("contact.subtitle2")}
           </p>
 
           <Form {...form}>
@@ -114,9 +114,9 @@ export function ContactSection() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Your name</FormLabel>
+                    <FormLabel>{t("contact.nameLabel")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Jane" {...field} />
+                      <Input placeholder={t("contact.namePlaceholder")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -128,9 +128,9 @@ export function ContactSection() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Your email</FormLabel>
+                    <FormLabel>{t("contact.emailLabel")}</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="jane@example.com" {...field} />
+                      <Input type="email" placeholder={t("contact.emailPlaceholder")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -142,10 +142,10 @@ export function ContactSection() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Message</FormLabel>
+                    <FormLabel>{t("contact.messageLabel")}</FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="What's on your mind?"
+                        placeholder={t("contact.messagePlaceholder")}
                         className="min-h-[120px] resize-none"
                         {...field} 
                       />
@@ -161,7 +161,7 @@ export function ContactSection() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="flex items-center gap-2">
-                      <span>Quick check: What is {question}?</span>
+                      <span>{t("contact.captchaLabel")} {question}?</span>
                       <button
                         type="button"
                         onClick={() => {
@@ -178,7 +178,7 @@ export function ContactSection() {
                       <Input 
                         type="text" 
                         inputMode="numeric"
-                        placeholder="Your answer" 
+                        placeholder={t("contact.namePlaceholder") === "张三" ? "你的答案" : "Your answer"}
                         autoComplete="off"
                         {...field} 
                       />
@@ -197,10 +197,10 @@ export function ContactSection() {
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Sending...
+                    {t("contact.submitting")}
                   </>
                 ) : (
-                  "Send message"
+                  t("contact.submitButton")
                 )}
               </Button>
             </form>
