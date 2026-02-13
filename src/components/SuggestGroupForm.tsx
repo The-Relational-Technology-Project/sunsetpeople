@@ -5,6 +5,7 @@ import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import { useMathCaptcha } from "@/hooks/use-math-captcha";
+import { useLanguage } from "@/i18n/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -32,6 +33,7 @@ type FormValues = z.infer<typeof formSchema>;
 export function SuggestGroupForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { question, validate, refresh } = useMathCaptcha();
+  const { t } = useLanguage();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -46,7 +48,6 @@ export function SuggestGroupForm() {
   });
 
   const onSubmit = async (values: FormValues) => {
-    // Validate captcha first
     if (!validate(values.captcha)) {
       form.setError("captcha", { message: "Incorrect answer, please try again" });
       refresh();
@@ -67,7 +68,6 @@ export function SuggestGroupForm() {
 
       if (error) throw error;
 
-      // Send email notification
       await supabase.functions.invoke("send-notification", {
         body: {
           type: "group_suggestion",
@@ -80,8 +80,8 @@ export function SuggestGroupForm() {
       });
 
       toast({
-        title: "Thank you!",
-        description: "We'll review your suggestion and may add it to the list.",
+        title: t("suggest.successTitle"),
+        description: t("suggest.successDesc"),
       });
       
       form.reset();
@@ -89,8 +89,8 @@ export function SuggestGroupForm() {
     } catch (error) {
       console.error("Error submitting group suggestion:", error);
       toast({
-        title: "Something went wrong",
-        description: "Please try again later.",
+        title: t("suggest.errorTitle"),
+        description: t("suggest.errorDesc"),
         variant: "destructive",
       });
     } finally {
@@ -107,12 +107,12 @@ export function SuggestGroupForm() {
           </div>
 
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4 text-center">
-            know a group we should add?
+            {t("suggest.title")}
           </h2>
           <p className="text-muted-foreground text-center mb-10">
-            This list is better when more people help shape it.
+            {t("suggest.subtitle1")}
             <br />
-            If you know a group, club, or recurring gathering in the Sunset, we would love to include it.
+            {t("suggest.subtitle2")}
           </p>
 
           <Form {...form}>
@@ -122,9 +122,9 @@ export function SuggestGroupForm() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Your name</FormLabel>
+                    <FormLabel>{t("suggest.nameLabel")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Jane" {...field} />
+                      <Input placeholder={t("suggest.namePlaceholder")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -136,9 +136,9 @@ export function SuggestGroupForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Your email</FormLabel>
+                    <FormLabel>{t("suggest.emailLabel")}</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="jane@example.com" {...field} />
+                      <Input type="email" placeholder={t("suggest.emailPlaceholder")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -150,9 +150,9 @@ export function SuggestGroupForm() {
                 name="group_name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Group name</FormLabel>
+                    <FormLabel>{t("suggest.groupNameLabel")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Sunset Morning Run Club" {...field} />
+                      <Input placeholder={t("suggest.groupNamePlaceholder")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -164,9 +164,9 @@ export function SuggestGroupForm() {
                 name="group_link"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Link (optional)</FormLabel>
+                    <FormLabel>{t("suggest.linkLabel")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="https://..." {...field} />
+                      <Input placeholder={t("suggest.linkPlaceholder")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -178,10 +178,10 @@ export function SuggestGroupForm() {
                 name="note"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Short note (optional)</FormLabel>
+                    <FormLabel>{t("suggest.noteLabel")}</FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="Tell us a bit about this group — when they meet, what it's like to show up for the first time..."
+                        placeholder={t("suggest.notePlaceholder")}
                         className="min-h-[100px] resize-none"
                         {...field} 
                       />
@@ -197,7 +197,7 @@ export function SuggestGroupForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="flex items-center gap-2">
-                      <span>Quick check: What is {question}?</span>
+                      <span>{t("suggest.captchaLabel")} {question}?</span>
                       <button
                         type="button"
                         onClick={() => {
@@ -214,7 +214,7 @@ export function SuggestGroupForm() {
                       <Input 
                         type="text" 
                         inputMode="numeric"
-                        placeholder="Your answer" 
+                        placeholder={t("suggest.namePlaceholder") === "张三" ? "你的答案" : "Your answer"}
                         autoComplete="off"
                         {...field} 
                       />
@@ -232,10 +232,10 @@ export function SuggestGroupForm() {
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Sending...
+                    {t("suggest.submitting")}
                   </>
                 ) : (
-                  "Send suggestion"
+                  t("suggest.submitButton")
                 )}
               </Button>
             </form>

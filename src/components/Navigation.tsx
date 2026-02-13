@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { LanguageToggle } from "@/components/LanguageToggle";
 
 const navLinks = [
-  { href: "#local-groups", label: "local groups" },
-  { href: "#more-fun", label: "more fun" },
-  { href: "#suggest", label: "suggest a group" },
-  { href: "#contact", label: "contact" },
+  { href: "#local-groups", key: "nav.localGroups" },
+  { href: "#more-fun", key: "nav.moreFun" },
+  { href: "#suggest", key: "nav.suggest" },
+  { href: "#contact", key: "nav.contact" },
 ];
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
 
   const handleClick = () => {
     setIsOpen(false);
@@ -23,7 +26,7 @@ export function Navigation() {
             href="#" 
             className="font-display text-xl font-bold text-foreground hover:text-primary transition-colors"
           >
-            outer sunset community
+            {t("nav.siteName")}
           </a>
 
           {/* Desktop Navigation */}
@@ -34,9 +37,10 @@ export function Navigation() {
                 href={link.href}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                {link.label}
+                {t(link.key)}
               </a>
             ))}
+            <LanguageToggle />
           </div>
 
           {/* Mobile Menu Button */}
@@ -60,9 +64,10 @@ export function Navigation() {
                   onClick={handleClick}
                   className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {link.label}
+                  {t(link.key)}
                 </a>
               ))}
+              <LanguageToggle />
             </div>
           </div>
         )}

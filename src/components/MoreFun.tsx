@@ -1,7 +1,10 @@
 import { ArrowRight, Calendar } from "lucide-react";
 import oceanLight from "@/assets/ocean-light.jpeg";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export function MoreFun() {
+  const { t } = useLanguage();
+
   return (
     <section id="more-fun" className="py-24 bg-primary/10 relative overflow-hidden scroll-mt-20">
       {/* Subtle background image */}
@@ -17,14 +20,14 @@ export function MoreFun() {
           </div>
 
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-            more fun
+            {t("moreFun.title")}
           </h2>
           
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-            Looking for events, pop-ups, and things happening this week?
+            {t("moreFun.description1")}
             <br />
-            We post what these groups and local venues are hosting at{" "}
-            <span className="font-semibold text-foreground">outersunset.today</span>.
+            {t("moreFun.description2")}{" "}
+            <span className="font-semibold text-foreground">{t("moreFun.siteName")}</span>.
           </p>
 
           <a
@@ -33,7 +36,7 @@ export function MoreFun() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
           >
-            Visit outersunset.today
+            {t("moreFun.button")}
             <ArrowRight size={20} />
           </a>
         </div>
