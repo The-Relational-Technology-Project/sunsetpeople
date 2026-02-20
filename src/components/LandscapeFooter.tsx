@@ -1,13 +1,13 @@
-import { Home, Map, Package, Calendar } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import type { LucideIcon } from "lucide-react";
+import { SketchHome, SketchCompass, SketchBox, SketchCalendar } from "./SketchIcons";
+import dunesGarden from "@/assets/dunes-garden.png";
 
 interface SiblingSite {
   nameKey: string;
   subtitleKey: string;
   domain: string;
   url: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
 }
 
 const SIBLING_SITES: SiblingSite[] = [
@@ -16,28 +16,28 @@ const SIBLING_SITES: SiblingSite[] = [
     subtitleKey: "footer.cozyCornerSub",
     domain: "cozycorner.place",
     url: "https://cozycorner.place",
-    icon: Home,
+    icon: SketchHome,
   },
   {
     nameKey: "footer.fieldGuide",
     subtitleKey: "footer.fieldGuideSub",
     domain: "outersunset.place",
     url: "https://outersunset.place",
-    icon: Map,
+    icon: SketchCompass,
   },
   {
     nameKey: "footer.supplies",
     subtitleKey: "footer.suppliesSub",
     domain: "communitysupplies.org",
     url: "https://communitysupplies.org",
-    icon: Package,
+    icon: SketchBox,
   },
   {
     nameKey: "footer.today",
     subtitleKey: "footer.todaySub",
     domain: "outersunset.today",
     url: "https://outersunset.today",
-    icon: Calendar,
+    icon: SketchCalendar,
   },
 ];
 
@@ -53,7 +53,7 @@ function SiteCard({ site }: { site: SiblingSite }) {
       className="group block rounded-2xl bg-white/70 dark:bg-white/10 backdrop-blur-sm border border-white/40 dark:border-white/10 p-5 text-center transition-all duration-200 hover:animate-bounce-hover hover:shadow-lg"
     >
       <div className="mx-auto mb-3 w-10 h-10 rounded-full bg-sunset/10 flex items-center justify-center text-sunset group-hover:bg-sunset/20 transition-colors">
-        <Icon size={20} />
+        <Icon size={24} />
       </div>
       <h3 className="font-display font-bold text-sm text-foreground leading-tight">
         {t(site.nameKey)}
@@ -71,28 +71,15 @@ function SiteCard({ site }: { site: SiblingSite }) {
 export function LandscapeFooter() {
   return (
     <div className="relative overflow-hidden">
-      {/* Sky layer */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, hsl(200 60% 82%) 0%, hsl(200 50% 88%) 35%, hsl(40 40% 82%) 60%, hsl(40 35% 78%) 75%, hsl(145 30% 55%) 90%, hsl(145 35% 45%) 100%)",
-        }}
+      {/* Photo background */}
+      <img
+        src={dunesGarden}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover"
       />
-
-      {/* Wavy dune divider using SVG */}
-      <div className="absolute inset-x-0 top-[30%] pointer-events-none">
-        <svg
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          className="w-full h-16 md:h-24"
-        >
-          <path
-            d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z"
-            fill="hsl(40 35% 78% / 0.5)"
-          />
-        </svg>
-      </div>
+      {/* Soft overlay so cards remain readable */}
+      <div className="absolute inset-0 bg-background/30 dark:bg-background/50" />
 
       {/* Content */}
       <div className="relative z-10 py-12 md:py-16 px-6">
