@@ -90,11 +90,18 @@ export default {
           from: { opacity: "0", transform: "translateY(10px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "bounce-hover": {
+          "0%": { transform: "scale(1) translateY(0)" },
+          "40%": { transform: "scale(1.06) translateY(-5px)" },
+          "60%": { transform: "scale(1.04) translateY(-3px)" },
+          "100%": { transform: "scale(1.05) translateY(-4px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.5s ease-out",
+        "bounce-hover": "bounce-hover 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
       },
     },
   },
