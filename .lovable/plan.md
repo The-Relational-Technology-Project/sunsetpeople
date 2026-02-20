@@ -1,58 +1,69 @@
 
-# Add Chinese / English Language Toggle
+# Three-Part Footer Redesign
 
 ## Overview
-Add a language toggle (English / Chinese) to the navigation bar, defaulting to English. All visible text on the site will be translatable, with a React context providing the current language and translation function throughout the app.
+Replace the current single footer with three distinct sections stacked at the bottom of every page: a site-specific links strip, an illustrated landscape with sibling site cards, and a water-themed credits bar.
 
-## Approach
-Use a lightweight, custom i18n solution (no external library needed) built with React Context. A single translations file will hold all English and Chinese strings, and every component will pull text from this context instead of hardcoding strings.
+## Structure
 
-## What will be created
+### Part 1: Site Links Strip
+A minimal, neutral row for site-specific utility links. For this site:
+- `/api` link
+- "Are you a helpful bot?" link
 
-### 1. Translation data file (`src/i18n/translations.ts`)
-A single file containing all English and Chinese text organized by section:
-- **Navigation**: "outer sunset community", "local groups", "more fun", "suggest a group", "contact"
-- **Hero**: heading, subtitle
-- **Local Groups**: section title, subtitle, all category names, all group names and descriptions
-- **More Fun**: heading, description, button text
-- **Suggest Group Form**: heading, description, all form labels, placeholders, button text, success/error toasts
-- **Contact Form**: heading, description, all form labels, placeholders, button text, success/error toasts, captcha label
-- **Footer**: site name, tagline, subtitle, bot link text
+Sits directly below page content on a subtle sand-dark background. Small, unobtrusive text links centered or right-aligned.
 
-### 2. Language context (`src/i18n/LanguageContext.tsx`)
-- A React context that stores the current language ("en" or "zh")
-- A `useLanguage()` hook returning `{ language, setLanguage, t }` where `t` is a translation lookup function
-- Language preference saved to `localStorage` so it persists across visits
+### Part 2: Landscape Footer (the illustrated scene)
+A CSS-painted coastal landscape with three visual layers:
+- **Sky**: light blue gradient at the top
+- **Sand dunes**: warm sandy band in the middle with gentle wave-like curves using CSS clip-path or border-radius
+- **Iceplant garden**: green-tinted area at the bottom
 
-### 3. Language toggle component (`src/components/LanguageToggle.tsx`)
-- A small toggle button showing "EN | 中文" in the navigation bar
-- Placed to the right of the desktop nav links and inside the mobile menu
-- Styled to match the existing nav aesthetic
+Four friendly cards float over this landscape, one for each sibling site:
 
-### 4. Updated components
-Every component with visible text will be updated to use the `t()` function instead of hardcoded strings:
-- `Navigation.tsx` -- nav link labels and site name
-- `Hero.tsx` -- heading and subtitle
-- `LocalGroups.tsx` -- section title, subtitle, category names, group names and descriptions
-- `MoreFun.tsx` -- all text content
-- `SuggestGroupForm.tsx` -- heading, labels, placeholders, toast messages
-- `ContactSection.tsx` -- heading, labels, placeholders, toast messages
-- `Footer.tsx` -- all text
-- `App.tsx` -- wrap the app in `LanguageProvider`
+1. **Cozy Corner** -- "48th Ave neighbor hub" / cozycorner.place
+2. **Outer Sunset Field Guide** -- "Neighborhood walking tour" / outersunset.place
+3. **Community Supplies** -- "For sharing things with one another" / communitysupplies.org
+4. **Outer Sunset Today** -- "Neighborhood calendar" / outersunset.today
 
-### 5. What stays in English only
-- Group website links (external URLs)
-- Structured data / JSON-LD (keeps English for SEO)
-- The `/llm.txt` route content
-- Form validation error messages from Zod (these are technical)
-- The math captcha numbers (universal)
+Card design:
+- Rounded, semi-transparent warm background with backdrop blur (frosted glass)
+- A Lucide icon at the top for visual character (Home for Cozy Corner, Map for Field Guide, Package for Supplies, Calendar for Today)
+- Bold site name, subtitle underneath, domain in small text
+- Bounce animation on hover (scale up + slight lift with spring easing)
+
+**Responsive behavior:**
+- Desktop: 4-column grid, cards evenly spaced across the landscape
+- Tablet: 2x2 grid
+- Mobile: single column stack, cards full-width with comfortable spacing (no horizontal scroll -- keeps things simple and accessible)
+
+### Part 3: Water Credits Bar
+A gentle blue-to-teal gradient evoking water/river. Two centered lines of text:
+
+- "Made by neighbors, with neighbors, for neighbors as relational tech" -- "relational tech" links to relationaltechproject.org
+- "Remix this for your neighborhood" -- "Remix this" links to studio.relationaltechproject.org
+
+Both fully translated to Chinese.
+
+## Files
+
+### New files
+- **`src/components/SiteLinksFooter.tsx`** -- Part 1, the utility links row
+- **`src/components/LandscapeFooter.tsx`** -- Part 2, the illustrated landscape with sibling site cards
+- **`src/components/CreditsFooter.tsx`** -- Part 3, the water credits bar
+
+### Modified files
+- **`src/components/Footer.tsx`** -- Refactored to compose the three new sub-components in order
+- **`src/i18n/translations.ts`** -- Add English and Chinese strings for:
+  - Sibling site names and subtitles
+  - Credits bar text ("Made by neighbors..." and "Remix this...")
+- **`tailwind.config.ts`** -- Add a `bounce-hover` keyframe for the card interaction
 
 ## Technical Details
 
-The translation keys will use dot notation like `nav.localGroups`, `hero.title`, `groups.outdoors.surfSpots.name`, etc.
-
-The `t()` function signature: `t(key: string) => string`. It looks up the key in the current language's translation object and falls back to English if a key is missing.
-
-Group data translations will be structured so each group has a translated name and description keyed by a stable identifier derived from the group name.
-
-The `LanguageProvider` wraps the app at the top level in `App.tsx`, making translations available everywhere without prop drilling.
+- The landscape background uses layered CSS gradients and possibly a subtle SVG wave divider between sky/sand/green zones -- no image files required
+- Cards use `backdrop-blur-sm` and `bg-white/80` for the frosted look
+- The bounce hover uses a custom keyframe: scale to 1.05 and translateY -4px with a cubic-bezier spring curve, applied via Tailwind's `hover:animate-bounce-hover` class
+- The sibling sites data array lives inside `LandscapeFooter.tsx` as a simple constant, making it easy to swap per-site when reusing the component
+- All text uses the `t()` function for bilingual support
+- Mobile layout uses `grid-cols-1`, tablet `sm:grid-cols-2`, desktop `lg:grid-cols-4` for clean responsive behavior without horizontal scrolling
