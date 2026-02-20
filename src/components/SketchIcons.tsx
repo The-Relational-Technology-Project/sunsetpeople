@@ -58,30 +58,40 @@ export function SketchCompass({ size = 24, className }: IconProps) {
   );
 }
 
-/** Community Supplies – a folding chair (matching the app icon) */
+/** Community Supplies – two folding lawn chairs side by side */
 export function SketchBox({ size = 24, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-      {/* seat */}
-      <path d="M12 22H36" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-      {/* backrest */}
-      <path d="M14 22V8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M14 8H30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <path d="M30 8V14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      {/* backrest slats */}
-      <path d="M18 8V14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
-      <path d="M22 8V14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
-      <path d="M26 8V14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
-      {/* front legs */}
-      <path d="M32 22L36 42" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      {/* — Left chair — */}
+      {/* back legs (angled back) */}
+      <path d="M6 40L10 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      {/* front legs (angled forward) */}
+      <path d="M20 40L16 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      {/* seat (connecting legs) */}
+      <path d="M9 22L17 25" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      {/* backrest frame */}
+      <path d="M10 18L8 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M8 6H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M15 6L13 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      {/* backrest slat */}
+      <path d="M9 10H14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+
+      {/* — Right chair — */}
       {/* back legs */}
-      <path d="M16 22L12 42" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-      {/* cross brace */}
-      <path d="M15 30L33 34" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
-      <path d="M15 34L33 30" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
-      {/* seat slats */}
-      <path d="M16 22H32" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
-      <path d="M14 20H34" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.2" />
+      <path d="M28 40L32 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      {/* front legs */}
+      <path d="M42 40L38 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      {/* seat */}
+      <path d="M31 22L39 25" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      {/* backrest frame */}
+      <path d="M32 18L30 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M30 6H37" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M37 6L35 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      {/* backrest slat */}
+      <path d="M31 10H36" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+
+      {/* ground line */}
+      <path d="M4 41H44" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.25" />
     </svg>
   );
 }
