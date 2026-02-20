@@ -8,27 +8,34 @@ interface IconProps {
   className?: string;
 }
 
-/** Cozy Corner – a little house with a heart chimney-smoke curl */
+/** Cozy Corner – a small cluster of houses / duplexes together */
 export function SketchHome({ size = 24, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-      {/* roof */}
-      <path d="M6 24L24 8L42 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ filter: "url(#sketch)" }} />
-      {/* walls */}
-      <path d="M10 23V40H38V23" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      {/* door */}
-      <path d="M20 40V30C20 29 21 28 22 28H26C27 28 28 29 28 30V40" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      {/* window */}
-      <rect x="14" y="28" width="4" height="4" rx="0.5" stroke="currentColor" strokeWidth="1.5" />
-      {/* heart smoke */}
-      <path d="M33 18C33 15 36 13 36 11C36 9 34 8 33 9C32 8 30 9 30 11C30 13 33 15 33 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="currentColor" opacity="0.3" />
-      {/* wobbly filter */}
-      <defs>
-        <filter id="sketch">
-          <feTurbulence baseFrequency="0.03" numOctaves="4" seed="2" />
-          <feDisplacementMap in="SourceGraphic" scale="1" />
-        </filter>
-      </defs>
+      {/* left small house */}
+      <path d="M4 30L10 24L16 30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6 29.5V38H14V29.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="8" y="32" width="3" height="3" rx="0.5" stroke="currentColor" strokeWidth="1.2" />
+      {/* center tall duplex */}
+      <path d="M14 26L22 16L30 26" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M16 25.5V40H28V25.5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      {/* duplex divider */}
+      <path d="M22 40V28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      {/* duplex windows */}
+      <rect x="17.5" y="29" width="3" height="3" rx="0.5" stroke="currentColor" strokeWidth="1.2" />
+      <rect x="23.5" y="29" width="3" height="3" rx="0.5" stroke="currentColor" strokeWidth="1.2" />
+      {/* duplex doors */}
+      <path d="M19 40V36C19 35.5 19.3 35 20 35C20.7 35 21 35.5 21 36V40" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M23 40V36C23 35.5 23.3 35 24 35C24.7 35 25 35.5 25 36V40" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+      {/* right small house */}
+      <path d="M30 28L36 22L42 28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M32 27.5V38H40V27.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="34" y="30" width="3" height="3" rx="0.5" stroke="currentColor" strokeWidth="1.2" />
+      <path d="M35.5 38V34" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+      {/* ground line */}
+      <path d="M2 40H46" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.4" />
+      {/* chimney smoke on center */}
+      <path d="M26 16C26 14 27 13 27 12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.35" />
     </svg>
   );
 }
@@ -51,22 +58,30 @@ export function SketchCompass({ size = 24, className }: IconProps) {
   );
 }
 
-/** Community Supplies – an open box with items peeking out */
+/** Community Supplies – a folding chair (matching the app icon) */
 export function SketchBox({ size = 24, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-      {/* box body */}
-      <path d="M8 20L12 40H36L40 20" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      {/* box flaps open */}
-      <path d="M8 20L4 16H20L24 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M24 20L28 16H44L40 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      {/* items peeking: book */}
-      <path d="M16 20V12C16 11 17 10 18 10H20C21 10 22 11 22 12V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="currentColor" opacity="0.15" />
-      {/* items peeking: flower */}
-      <circle cx="30" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" fill="currentColor" opacity="0.2" />
-      <path d="M30 15V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      {/* heart on box */}
-      <path d="M24 30C24 28 26 27 26 26C26 25 25 24.5 24 25.5C23 24.5 22 25 22 26C22 27 24 28 24 30Z" fill="currentColor" opacity="0.3" />
+      {/* seat */}
+      <path d="M12 22H36" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      {/* backrest */}
+      <path d="M14 22V8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M14 8H30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M30 8V14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      {/* backrest slats */}
+      <path d="M18 8V14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+      <path d="M22 8V14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+      <path d="M26 8V14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+      {/* front legs */}
+      <path d="M32 22L36 42" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      {/* back legs */}
+      <path d="M16 22L12 42" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      {/* cross brace */}
+      <path d="M15 30L33 34" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+      <path d="M15 34L33 30" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+      {/* seat slats */}
+      <path d="M16 22H32" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
+      <path d="M14 20H34" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.2" />
     </svg>
   );
 }
