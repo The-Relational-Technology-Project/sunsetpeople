@@ -1,69 +1,71 @@
 
-# Three-Part Footer Redesign
+
+# Bulletin Board Footer Redesign
 
 ## Overview
-Replace the current single footer with three distinct sections stacked at the bottom of every page: a site-specific links strip, an illustrated landscape with sibling site cards, and a water-themed credits bar.
+Replace the landscape photo background with a clean bulletin board aesthetic. Cards become pinned notes with distinct muted colors, sitting on a pale fog-sand background. Simplify the credits section to plain text on the same background.
 
-## Structure
+## Visual Design
 
-### Part 1: Site Links Strip
-A minimal, neutral row for site-specific utility links. For this site:
-- `/api` link
-- "Are you a helpful bot?" link
+### Color Palette (from the user's spec)
+- Background: `#e8e0d0` (pale fog-sand)
+- Card colors (one per card): Sand `#ddd0b0`, Fog blue `#7a9db8`, Iceplant rust `#9c5a4a` or Sunset amber `#e8933a`, Dune grass `#8a9e6b`
+- Pin colors: matching warm tones from the palette
+- Text: dark brown/charcoal for readability
 
-Sits directly below page content on a subtle sand-dark background. Small, unobtrusive text links centered or right-aligned.
+### Structure (3 sections remain)
 
-### Part 2: Landscape Footer (the illustrated scene)
-A CSS-painted coastal landscape with three visual layers:
-- **Sky**: light blue gradient at the top
-- **Sand dunes**: warm sandy band in the middle with gentle wave-like curves using CSS clip-path or border-radius
-- **Iceplant garden**: green-tinted area at the bottom
+**Part 1: Site Links Strip** -- unchanged (`SiteLinksFooter.tsx`)
 
-Four friendly cards float over this landscape, one for each sibling site:
+**Part 2: Bulletin Board Cards** -- redesigned `LandscapeFooter.tsx`
+- Remove the photo background and overlay
+- Use `#e8e0d0` as a flat background
+- Cards styled as pinned paper notes:
+  - Each card gets a unique muted background color from the palette
+  - Slight rotation (alternating -2deg, 1deg, -1deg, 2deg) for a casual "pinned to board" feel
+  - A small colored circle (pin) at the top of each card
+  - Subtle box shadow for depth
+  - Font styling: display font for titles (hand-lettered feel), serif-ish subtitles
+  - Domain in small monospace text at bottom
+- Remove the sketch icons (pins replace them as the visual accent)
+- Keep the bounce-hover animation
+- Responsive: same grid approach (1 col mobile, 2 col tablet, 4 col desktop)
 
-1. **Cozy Corner** -- "48th Ave neighbor hub" / cozycorner.place
-2. **Outer Sunset Field Guide** -- "Neighborhood walking tour" / outersunset.place
-3. **Community Supplies** -- "For sharing things with one another" / communitysupplies.org
-4. **Outer Sunset Today** -- "Neighborhood calendar" / outersunset.today
+**Part 3: Credits** -- simplified `CreditsFooter.tsx`
+- Remove the blue-teal gradient
+- Same `#e8e0d0` background, continuing the bulletin board feel
+- Two simple centered lines in muted text:
+  - "Made by neighbors, with neighbors, for neighbors"
+  - "Remix this for your neighborhood" with "Remix this" linking to studio.relationaltechproject.org
+- Remove the "relational tech" link (per the user's updated copy)
 
-Card design:
-- Rounded, semi-transparent warm background with backdrop blur (frosted glass)
-- A Lucide icon at the top for visual character (Home for Cozy Corner, Map for Field Guide, Package for Supplies, Calendar for Today)
-- Bold site name, subtitle underneath, domain in small text
-- Bounce animation on hover (scale up + slight lift with spring easing)
+## Files to Modify
 
-**Responsive behavior:**
-- Desktop: 4-column grid, cards evenly spaced across the landscape
-- Tablet: 2x2 grid
-- Mobile: single column stack, cards full-width with comfortable spacing (no horizontal scroll -- keeps things simple and accessible)
+### `src/components/LandscapeFooter.tsx`
+- Remove photo background (`dunesGarden` import and `<img>`)
+- Remove sketch icon imports and `icon` from the data array
+- Set background to `#e8e0d0`
+- Assign each card a unique background color and pin color from the palette
+- Add slight CSS rotation per card for the pinned-note effect
+- Style cards with paper-like shadows, rounded corners, and a pin dot at top
 
-### Part 3: Water Credits Bar
-A gentle blue-to-teal gradient evoking water/river. Two centered lines of text:
+### `src/components/CreditsFooter.tsx`
+- Replace the gradient background with `#e8e0d0`
+- Simplify to two lines of dark text
+- Update copy: "Made by neighbors, with neighbors, for neighbors" (no "as relational tech" link)
+- Keep "Remix this" linking to studio.relationaltechproject.org
 
-- "Made by neighbors, with neighbors, for neighbors as relational tech" -- "relational tech" links to relationaltechproject.org
-- "Remix this for your neighborhood" -- "Remix this" links to studio.relationaltechproject.org
+### `src/i18n/translations.ts`
+- Update `footer.credits1` to "Made by neighbors, with neighbors, for neighbors" (standalone, no trailing "as")
+- Remove `footer.creditsLink1` usage (or keep key but unused)
+- Update Chinese translations to match
 
-Both fully translated to Chinese.
+### `tailwind.config.ts`
+- No changes needed (bounce-hover animation already exists)
 
-## Files
+## Technical Notes
+- Each card in the `SIBLING_SITES` array gains a `color` and `pinColor` field
+- Rotation is applied via inline `style={{ transform: rotate(...) }}` per card, with hover resetting to 0deg for a satisfying "lift off board" effect
+- The pin is a small absolute-positioned circle div at top-center of each card
+- Dark mode: slightly adjust the background and card opacities for readability
 
-### New files
-- **`src/components/SiteLinksFooter.tsx`** -- Part 1, the utility links row
-- **`src/components/LandscapeFooter.tsx`** -- Part 2, the illustrated landscape with sibling site cards
-- **`src/components/CreditsFooter.tsx`** -- Part 3, the water credits bar
-
-### Modified files
-- **`src/components/Footer.tsx`** -- Refactored to compose the three new sub-components in order
-- **`src/i18n/translations.ts`** -- Add English and Chinese strings for:
-  - Sibling site names and subtitles
-  - Credits bar text ("Made by neighbors..." and "Remix this...")
-- **`tailwind.config.ts`** -- Add a `bounce-hover` keyframe for the card interaction
-
-## Technical Details
-
-- The landscape background uses layered CSS gradients and possibly a subtle SVG wave divider between sky/sand/green zones -- no image files required
-- Cards use `backdrop-blur-sm` and `bg-white/80` for the frosted look
-- The bounce hover uses a custom keyframe: scale to 1.05 and translateY -4px with a cubic-bezier spring curve, applied via Tailwind's `hover:animate-bounce-hover` class
-- The sibling sites data array lives inside `LandscapeFooter.tsx` as a simple constant, making it easy to swap per-site when reusing the component
-- All text uses the `t()` function for bilingual support
-- Mobile layout uses `grid-cols-1`, tablet `sm:grid-cols-2`, desktop `lg:grid-cols-4` for clean responsive behavior without horizontal scrolling
