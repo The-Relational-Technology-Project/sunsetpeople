@@ -1,13 +1,13 @@
 import { useLanguage } from "@/i18n/LanguageContext";
-import { SketchHome, SketchCompass, SketchBox, SketchCalendar } from "./SketchIcons";
-import dunesGarden from "@/assets/dunes-garden.png";
 
 interface SiblingSite {
   nameKey: string;
   subtitleKey: string;
   domain: string;
   url: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
+  cardBg: string;
+  pinColor: string;
+  rotation: string;
 }
 
 const SIBLING_SITES: SiblingSite[] = [
@@ -16,52 +16,76 @@ const SIBLING_SITES: SiblingSite[] = [
     subtitleKey: "footer.cozyCornerSub",
     domain: "cozycorner.place",
     url: "https://cozycorner.place",
-    icon: SketchHome,
+    cardBg: "#ddd0b0",
+    pinColor: "#9c5a4a",
+    rotation: "-2deg",
   },
   {
     nameKey: "footer.fieldGuide",
     subtitleKey: "footer.fieldGuideSub",
     domain: "outersunset.place",
     url: "https://outersunset.place",
-    icon: SketchCompass,
+    cardBg: "#7a9db8",
+    pinColor: "#3a6e9e",
+    rotation: "1deg",
   },
   {
     nameKey: "footer.supplies",
     subtitleKey: "footer.suppliesSub",
     domain: "communitysupplies.org",
     url: "https://communitysupplies.org",
-    icon: SketchBox,
+    cardBg: "#e8933a",
+    pinColor: "#9c5a4a",
+    rotation: "-1deg",
   },
   {
     nameKey: "footer.today",
     subtitleKey: "footer.todaySub",
     domain: "outersunset.today",
     url: "https://outersunset.today",
-    icon: SketchCalendar,
+    cardBg: "#8a9e6b",
+    pinColor: "#5a7a52",
+    rotation: "2deg",
   },
 ];
 
-function SiteCard({ site }: { site: SiblingSite }) {
+function PinnedCard({ site }: { site: SiblingSite }) {
   const { t } = useLanguage();
-  const Icon = site.icon;
 
   return (
     <a
       href={site.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block rounded-2xl bg-white/70 dark:bg-white/10 backdrop-blur-sm border border-white/40 dark:border-white/10 p-5 text-center transition-all duration-200 hover:animate-bounce-hover hover:shadow-lg"
+      className="group relative block rounded-md p-5 pt-8 text-center transition-all duration-200 hover:animate-bounce-hover"
+      style={{
+        backgroundColor: site.cardBg,
+        transform: `rotate(${site.rotation})`,
+        boxShadow: "2px 3px 8px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.08)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "rotate(0deg) scale(1.05) translateY(-4px)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = `rotate(${site.rotation})`;
+      }}
     >
-      <div className="mx-auto mb-3 w-10 h-10 rounded-full bg-sunset/10 flex items-center justify-center text-sunset group-hover:bg-sunset/20 transition-colors">
-        <Icon size={24} />
-      </div>
-      <h3 className="font-display font-bold text-sm text-foreground leading-tight">
+      {/* Pin */}
+      <div
+        className="absolute top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full shadow-sm"
+        style={{
+          backgroundColor: site.pinColor,
+          boxShadow: `0 1px 2px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.3)`,
+        }}
+      />
+
+      <h3 className="font-display font-bold text-sm leading-tight" style={{ color: "#3a2a1a" }}>
         {t(site.nameKey)}
       </h3>
-      <p className="mt-1 text-xs text-foreground/60 leading-snug">
+      <p className="mt-1 text-xs leading-snug" style={{ color: "#3a2a1aCC" }}>
         {t(site.subtitleKey)}
       </p>
-      <p className="mt-2 text-[11px] text-foreground/40 font-mono">
+      <p className="mt-2 text-[11px] font-mono" style={{ color: "#3a2a1a99" }}>
         {site.domain}
       </p>
     </a>
@@ -70,23 +94,12 @@ function SiteCard({ site }: { site: SiblingSite }) {
 
 export function LandscapeFooter() {
   return (
-    <div className="relative overflow-hidden">
-      {/* Photo background */}
-      <img
-        src={dunesGarden}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      {/* Soft overlay so cards remain readable */}
-      <div className="absolute inset-0 bg-background/30 dark:bg-background/50" />
-
-      {/* Content */}
-      <div className="relative z-10 py-12 md:py-16 px-6">
+    <div style={{ backgroundColor: "#e8e0d0" }}>
+      <div className="py-12 md:py-16 px-6">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
             {SIBLING_SITES.map((site) => (
-              <SiteCard key={site.domain} site={site} />
+              <PinnedCard key={site.domain} site={site} />
             ))}
           </div>
         </div>
