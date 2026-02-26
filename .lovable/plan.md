@@ -1,71 +1,71 @@
 
-
-# Bulletin Board Footer Redesign
+# Playful Bulletin Board Cards
 
 ## Overview
-Replace the landscape photo background with a clean bulletin board aesthetic. Cards become pinned notes with distinct muted colors, sitting on a pale fog-sand background. Simplify the credits section to plain text on the same background.
+Make the bulletin board footer more textured and playful: add a cork-like background texture, mix tape and pushpin attachments across the four cards with irregular sizing, and update all card copy to the new conversational format.
 
-## Visual Design
+## Card Copy Updates
 
-### Color Palette (from the user's spec)
-- Background: `#e8e0d0` (pale fog-sand)
-- Card colors (one per card): Sand `#ddd0b0`, Fog blue `#7a9db8`, Iceplant rust `#9c5a4a` or Sunset amber `#e8933a`, Dune grass `#8a9e6b`
-- Pin colors: matching warm tones from the palette
-- Text: dark brown/charcoal for readability
+Each card gets a three-line layout: a casual question line, a bold site name, and the domain.
 
-### Structure (3 sections remain)
+| Card | Question | Name | Domain |
+|------|----------|------|--------|
+| Cozy Corner | Live near 48th and Irving? | Cozy Corner Neighbor Hub | cozycorner.place |
+| Field Guide | Exploring the neighborhood? | Outer Sunset Field Guide | outersunset.place |
+| Supplies | Want to share things with neighbors? | Community Supplies | communitysupplies.org |
+| Today | Curious what's happening today? | Outer Sunset Today | outersunset.today |
 
-**Part 1: Site Links Strip** -- unchanged (`SiteLinksFooter.tsx`)
+## Visual Changes
 
-**Part 2: Bulletin Board Cards** -- redesigned `LandscapeFooter.tsx`
-- Remove the photo background and overlay
-- Use `#e8e0d0` as a flat background
-- Cards styled as pinned paper notes:
-  - Each card gets a unique muted background color from the palette
-  - Slight rotation (alternating -2deg, 1deg, -1deg, 2deg) for a casual "pinned to board" feel
-  - A small colored circle (pin) at the top of each card
-  - Subtle box shadow for depth
-  - Font styling: display font for titles (hand-lettered feel), serif-ish subtitles
-  - Domain in small monospace text at bottom
-- Remove the sketch icons (pins replace them as the visual accent)
-- Keep the bounce-hover animation
-- Responsive: same grid approach (1 col mobile, 2 col tablet, 4 col desktop)
+### Cork board texture
+- Add a subtle CSS texture to the `#e8e0d0` background using a repeating radial-gradient pattern of tiny speckles (darker and lighter dots) to simulate cork grain
+- No image files needed -- pure CSS
 
-**Part 3: Credits** -- simplified `CreditsFooter.tsx`
-- Remove the blue-teal gradient
-- Same `#e8e0d0` background, continuing the bulletin board feel
-- Two simple centered lines in muted text:
-  - "Made by neighbors, with neighbors, for neighbors"
-  - "Remix this for your neighborhood" with "Remix this" linking to studio.relationaltechproject.org
-- Remove the "relational tech" link (per the user's updated copy)
+### Card irregularity
+- Vary card sizes slightly: different padding amounts per card (e.g., one card a bit wider with more horizontal padding, another taller with more vertical padding)
+- More varied rotations: -3deg, 1.5deg, -1deg, 2.5deg
+- Slightly different border-radius per card (e.g., 4px, 6px, 3px, 5px)
+
+### Attachment styles -- mix of tape and pushpins
+Two cards get **tape strips** (diagonal semi-transparent rectangles in the corners), two get **pushpins** (3D-looking circles with a highlight and shadow).
+
+- **Cozy Corner**: Tape in top-left and bottom-right corners (warm semi-transparent strips rotated ~45deg)
+- **Field Guide**: Pushpin at top-center (larger than current pin, with a metallic gradient, shadow underneath, and a small highlight dot)
+- **Supplies**: Tape in all four corners (criss-cross look)
+- **Today**: Pushpin at top-right (offset, not centered)
+
+Pushpin design: ~16px circle with a radial gradient (pin color to darker shade), a 2px dark shadow below, and a small white highlight dot at top-left for 3D effect.
+
+Tape design: ~40px x 12px rectangle, rotated 45deg, with `bg-white/25` and a subtle border, positioned at corners via absolute positioning.
 
 ## Files to Modify
 
 ### `src/components/LandscapeFooter.tsx`
-- Remove photo background (`dunesGarden` import and `<img>`)
-- Remove sketch icon imports and `icon` from the data array
-- Set background to `#e8e0d0`
-- Assign each card a unique background color and pin color from the palette
-- Add slight CSS rotation per card for the pinned-note effect
-- Style cards with paper-like shadows, rounded corners, and a pin dot at top
-
-### `src/components/CreditsFooter.tsx`
-- Replace the gradient background with `#e8e0d0`
-- Simplify to two lines of dark text
-- Update copy: "Made by neighbors, with neighbors, for neighbors" (no "as relational tech" link)
-- Keep "Remix this" linking to studio.relationaltechproject.org
+- Add cork texture CSS to the background div
+- Add `questionKey` and `attachment` type ("tape" or "pin") plus `pinPosition` to the `SiblingSite` interface
+- Update `SIBLING_SITES` data with new keys, varied rotations, and attachment config
+- Split `PinnedCard` rendering to show tape strips or pushpin based on type
+- Render the question line above the bold name
+- Vary padding and border-radius per card
 
 ### `src/i18n/translations.ts`
-- Update `footer.credits1` to "Made by neighbors, with neighbors, for neighbors" (standalone, no trailing "as")
-- Remove `footer.creditsLink1` usage (or keep key but unused)
-- Update Chinese translations to match
+- Add new question keys in English:
+  - `footer.cozyCornerQ`: "Live near 48th and Irving?"
+  - `footer.fieldGuideQ`: "Exploring the neighborhood?"
+  - `footer.suppliesQ`: "Want to share things with neighbors?"
+  - `footer.todayQ`: "Curious what's happening today?"
+- Update name keys:
+  - `footer.cozyCorner`: "Cozy Corner Neighbor Hub"
+- Remove subtitle keys from card rendering (subtitles replaced by questions)
+- Add Chinese translations:
+  - `footer.cozyCornerQ`: "住在第48大道和Irving街附近？"
+  - `footer.fieldGuideQ`: "想探索这个社区？"
+  - `footer.suppliesQ`: "想和邻居分享东西？"
+  - `footer.todayQ`: "好奇今天有什么活动？"
+  - `footer.cozyCorner`: "温馨角落邻里中心"
 
-### `tailwind.config.ts`
-- No changes needed (bounce-hover animation already exists)
-
-## Technical Notes
-- Each card in the `SIBLING_SITES` array gains a `color` and `pinColor` field
-- Rotation is applied via inline `style={{ transform: rotate(...) }}` per card, with hover resetting to 0deg for a satisfying "lift off board" effect
-- The pin is a small absolute-positioned circle div at top-center of each card
-- Dark mode: slightly adjust the background and card opacities for readability
-
+## Technical Details
+- Tape strips are `<div>` elements with absolute positioning, rotated 45deg, using semi-transparent white/cream backgrounds
+- Pushpins use a slightly larger circle (w-4 h-4) with `radial-gradient` for the metallic look and a separate shadow element beneath
+- Cork texture: `background-image: radial-gradient(circle, #d4cbb8 1px, transparent 1px)` with `background-size: 8px 8px` layered over the base color
+- Card padding varies: cards alternate between `p-5 pt-10` and `p-6 pt-9` for irregularity
