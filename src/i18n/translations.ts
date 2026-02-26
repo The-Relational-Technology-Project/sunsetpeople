@@ -145,14 +145,14 @@ export const translations: Record<"en" | "zh", TranslationSet> = {
     "footer.botLink": "Are you a helpful bot?",
 
     // Landscape Footer - sibling sites
-    "footer.cozyCorner": "Cozy Corner",
-    "footer.cozyCornerSub": "48th Ave neighbor hub",
+    "footer.cozyCorner": "Cozy Corner Neighbor Hub",
+    "footer.cozyCornerQ": "Live near 48th and Irving?",
     "footer.fieldGuide": "Outer Sunset Field Guide",
-    "footer.fieldGuideSub": "Neighborhood walking tour",
+    "footer.fieldGuideQ": "Exploring the neighborhood?",
     "footer.supplies": "Community Supplies",
-    "footer.suppliesSub": "For sharing things with one another",
+    "footer.suppliesQ": "Want to share things with neighbors?",
     "footer.today": "Outer Sunset Today",
-    "footer.todaySub": "Neighborhood calendar",
+    "footer.todayQ": "Curious what's happening today?",
     "footer.neighborSites": "Neighborhood sites",
 
     // Credits Footer
@@ -306,14 +306,14 @@ export const translations: Record<"en" | "zh", TranslationSet> = {
     "footer.botLink": "你是一个有用的机器人吗？",
 
     // Landscape Footer - sibling sites
-    "footer.cozyCorner": "温馨角落",
-    "footer.cozyCornerSub": "第48大道邻里中心",
+    "footer.cozyCorner": "温馨角落邻里中心",
+    "footer.cozyCornerQ": "住在第48大道和Irving街附近？",
     "footer.fieldGuide": "外日落区实地指南",
-    "footer.fieldGuideSub": "社区步行游览",
+    "footer.fieldGuideQ": "想探索这个社区？",
     "footer.supplies": "社区物资",
-    "footer.suppliesSub": "与彼此分享物品",
+    "footer.suppliesQ": "想和邻居分享东西？",
     "footer.today": "外日落区今日",
-    "footer.todaySub": "社区日历",
+    "footer.todayQ": "好奇今天有什么活动？",
     "footer.neighborSites": "社区网站",
 
     // Credits Footer
