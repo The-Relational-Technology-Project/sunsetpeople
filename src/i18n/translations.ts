@@ -156,7 +156,7 @@ export const translations: Record<"en" | "zh", TranslationSet> = {
     "footer.neighborSites": "Neighborhood sites",
 
     // Credits Footer
-    "footer.credits1": "Made by neighbors, with neighbors, for neighbors as",
+    "footer.credits1": "Made by neighbors, with neighbors, for neighbors",
     "footer.creditsLink1": "relational tech",
     "footer.credits2": "for your neighborhood",
     "footer.creditsLink2": "Remix this",
@@ -317,7 +317,7 @@ export const translations: Record<"en" | "zh", TranslationSet> = {
     "footer.neighborSites": "社区网站",
 
     // Credits Footer
-    "footer.credits1": "由邻居制作，与邻居一起，为邻居服务，作为",
+    "footer.credits1": "由邻居制作，与邻居一起，为邻居服务",
     "footer.creditsLink1": "关系科技",
     "footer.credits2": "为你的社区",
     "footer.creditsLink2": "复制改造",
