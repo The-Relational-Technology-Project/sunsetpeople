@@ -9,9 +9,8 @@ interface SiblingSite {
   rotation: string;
   borderRadius: string;
   padding: string;
-  attachment: "tape" | "pin";
-  pinPosition?: string;
-  pinColor?: string;
+  pinPosition: string;
+  pinColor: string;
 }
 
 const SIBLING_SITES: SiblingSite[] = [
@@ -20,22 +19,22 @@ const SIBLING_SITES: SiblingSite[] = [
     questionKey: "footer.cozyCornerQ",
     domain: "cozycorner.place",
     url: "https://cozycorner.place",
-    cardBg: "#ddd0b0",
+    cardBg: "#f5f0e6",
     rotation: "-3deg",
-    borderRadius: "4px",
+    borderRadius: "2px",
     padding: "p-5 pt-10",
-    attachment: "tape",
+    pinPosition: "left-[40%]",
+    pinColor: "#9c5a4a",
   },
   {
     nameKey: "footer.fieldGuide",
     questionKey: "footer.fieldGuideQ",
     domain: "outersunset.place",
     url: "https://outersunset.place",
-    cardBg: "#7a9db8",
+    cardBg: "#eef3f7",
     rotation: "1.5deg",
-    borderRadius: "6px",
+    borderRadius: "3px",
     padding: "p-6 pt-9",
-    attachment: "pin",
     pinPosition: "left-1/2 -translate-x-1/2",
     pinColor: "#3a6e9e",
   },
@@ -44,40 +43,26 @@ const SIBLING_SITES: SiblingSite[] = [
     questionKey: "footer.suppliesQ",
     domain: "communitysupplies.org",
     url: "https://communitysupplies.org",
-    cardBg: "#e8933a",
+    cardBg: "#fdf5ec",
     rotation: "-1deg",
-    borderRadius: "3px",
-    padding: "p-5 pt-10",
-    attachment: "tape",
+    borderRadius: "2px",
+    padding: "p-5 pt-11",
+    pinPosition: "right-5",
+    pinColor: "#e8933a",
   },
   {
     nameKey: "footer.today",
     questionKey: "footer.todayQ",
     domain: "outersunset.today",
     url: "https://outersunset.today",
-    cardBg: "#8a9e6b",
+    cardBg: "#f0f4ec",
     rotation: "2.5deg",
-    borderRadius: "5px",
+    borderRadius: "3px",
     padding: "p-6 pt-9",
-    attachment: "pin",
-    pinPosition: "right-4",
+    pinPosition: "left-[30%]",
     pinColor: "#5a7a52",
   },
 ];
-
-/* Semi-transparent tape strip */
-function TapeStrip({ className }: { className: string }) {
-  return (
-    <div
-      className={`absolute w-10 h-3 rotate-45 pointer-events-none ${className}`}
-      style={{
-        background: "rgba(255,255,245,0.30)",
-        border: "1px solid rgba(255,255,255,0.18)",
-        borderRadius: "1px",
-      }}
-    />
-  );
-}
 
 /* 3D pushpin with highlight and shadow */
 function Pushpin({ position, color }: { position: string; color: string }) {
@@ -125,34 +110,20 @@ function PinnedCard({ site }: { site: SiblingSite }) {
       style={{
         backgroundColor: site.cardBg,
         transform: `rotate(${site.rotation})`,
-        boxShadow: "2px 3px 8px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.08)",
+        boxShadow: "1px 2px 6px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06)",
         borderRadius: site.borderRadius,
+        border: "1px solid rgba(0,0,0,0.04)",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = "rotate(0deg) scale(1.05) translateY(-4px)";
+        e.currentTarget.style.boxShadow = "2px 4px 12px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.08)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = `rotate(${site.rotation})`;
+        e.currentTarget.style.boxShadow = "1px 2px 6px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06)";
       }}
     >
-      {/* Attachment: tape strips or pushpin */}
-      {site.attachment === "tape" && site.domain === "cozycorner.place" && (
-        <>
-          <TapeStrip className="-top-1 -left-2" />
-          <TapeStrip className="-bottom-1 -right-2" />
-        </>
-      )}
-      {site.attachment === "tape" && site.domain === "communitysupplies.org" && (
-        <>
-          <TapeStrip className="-top-1 -left-2" />
-          <TapeStrip className="-top-1 -right-2 -rotate-45" />
-          <TapeStrip className="-bottom-1 -left-2 -rotate-45" />
-          <TapeStrip className="-bottom-1 -right-2" />
-        </>
-      )}
-      {site.attachment === "pin" && site.pinColor && (
-        <Pushpin position={site.pinPosition || "left-1/2 -translate-x-1/2"} color={site.pinColor} />
-      )}
+      <Pushpin position={site.pinPosition} color={site.pinColor} />
 
       {/* Question */}
       <p className="text-xs leading-snug mb-1" style={{ color: "#3a2a1aCC" }}>
