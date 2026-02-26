@@ -154,6 +154,7 @@ export const translations: Record<"en" | "zh", TranslationSet> = {
     "footer.today": "Outer Sunset Today",
     "footer.todayQ": "Curious what's happening today?",
     "footer.neighborSites": "Neighborhood sites",
+    "footer.boardTitle": "Relational tech in the Outer Sunset",
 
     // Credits Footer
     "footer.credits1": "Made by neighbors, with neighbors, for neighbors",
@@ -315,6 +316,7 @@ export const translations: Record<"en" | "zh", TranslationSet> = {
     "footer.today": "外日落区今日",
     "footer.todayQ": "好奇今天有什么活动？",
     "footer.neighborSites": "社区网站",
+    "footer.boardTitle": "外日落区的关系科技",
 
     // Credits Footer
     "footer.credits1": "由邻居制作，与邻居一起，为邻居服务",

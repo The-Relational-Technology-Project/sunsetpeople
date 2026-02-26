@@ -142,6 +142,7 @@ function PinnedCard({ site }: { site: SiblingSite }) {
 }
 
 export function LandscapeFooter() {
+  const { t } = useLanguage();
   return (
     <div
       style={{
@@ -154,8 +155,11 @@ export function LandscapeFooter() {
         backgroundPosition: "0 0, 4px 4px",
       }}
     >
-      <div className="py-12 md:py-16 px-6">
+    <div className="py-12 md:py-16 px-6">
         <div className="container mx-auto">
+          <h2 className="text-center font-display text-lg md:text-xl font-bold mb-8 md:mb-10" style={{ color: "#3a2a1a" }}>
+            {t("footer.boardTitle")}
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
             {SIBLING_SITES.map((site) => (
               <PinnedCard key={site.domain} site={site} />
