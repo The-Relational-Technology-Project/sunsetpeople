@@ -126,15 +126,15 @@ function PinnedCard({ site }: { site: SiblingSite }) {
       <Pushpin position={site.pinPosition} color={site.pinColor} />
 
       {/* Question */}
-      <p className="text-xs leading-snug mb-1" style={{ color: "#3a2a1aCC" }}>
+      <p className="text-sm font-semibold leading-snug mb-2" style={{ color: "#3a2a1a" }}>
         {t(site.questionKey)}
       </p>
       {/* Site name */}
-      <h3 className="font-display font-bold text-sm leading-tight" style={{ color: "#3a2a1a" }}>
+      <p className="text-xs leading-tight" style={{ color: "#3a2a1aCC" }}>
         {t(site.nameKey)}
-      </h3>
+      </p>
       {/* Domain */}
-      <p className="mt-2 text-[11px] font-mono" style={{ color: "#3a2a1a99" }}>
+      <p className="mt-1.5 text-[11px] font-mono" style={{ color: "#3a2a1a99" }}>
         {site.domain}
       </p>
     </a>
