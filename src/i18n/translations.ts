@@ -154,7 +154,7 @@ export const translations: Record<"en" | "zh", TranslationSet> = {
     "footer.today": "Outer Sunset Today",
     "footer.todayQ": "Curious what's happening today?",
     "footer.neighborSites": "Neighborhood sites",
-    "footer.boardTitle": "Free neighborhood tools made by us, for us",
+    "footer.boardTitle": "Neighborhood tools made by us, for us",
 
     // Credits Footer
     "footer.credits1": "Made by neighbors, with neighbors, for neighbors",
