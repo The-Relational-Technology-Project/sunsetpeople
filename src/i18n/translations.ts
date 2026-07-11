@@ -49,7 +49,7 @@ export const translations: Record<"en" | "zh", TranslationSet> = {
     "group.urbanForest.name": "Friends of the Urban Forest",
     "group.urbanForest.desc": "Tree planting and neighborhood greening.",
     "group.outerMamas.name": "Outer Mamas and Outer Dadas",
-    "group.outerMamas.desc": "Group chats and gatherings for dads and moms in the Sunset and Richmond. Ask a member or share your WhatsApp number in the contact message and someone will add you!",
+    "group.outerMamas.desc": "Group chats and gatherings for dads and moms in the Sunset and Richmond.",
     "group.greenSunset.name": "Green Outer Sunset",
     "group.greenSunset.desc": "This group helps people rip up the concrete in their front yards to plant gardens and sidewalk trees. They'll support you every step of the way.",
 

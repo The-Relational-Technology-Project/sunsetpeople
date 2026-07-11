@@ -79,7 +79,7 @@ export const categories: Category[] = [
       },
       {
         name: "Outer Mamas and Outer Dadas",
-        description: "Group chats and gatherings for dads and moms in the Sunset and Richmond. Ask a member or share your WhatsApp number in the contact message and someone will add you!",
+        description: "Group chats and gatherings for dads and moms in the Sunset and Richmond.",
       },
       {
         name: "Green Outer Sunset",
